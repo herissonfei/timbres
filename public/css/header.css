@@ -1,0 +1,165 @@
+/* ---- */
+.wrapper--header {
+  display: flex;
+  /* margin: 0; */
+}
+
+.header {
+  display: block;
+}
+
+.header__logo {
+  display: block;
+  margin-left: 10vh;
+  margin-right: 50px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  width: 180px;
+}
+
+.header--bg {
+  background-color: var(--color-secondary);
+}
+
+/* 中间 */
+
+p {
+  font-family: var(--font-secondary);
+}
+
+input {
+  outline: none;
+}
+
+input {
+  border: 1px solid var(--color-palette-first);
+  padding: 10px;
+}
+
+header input {
+  border-radius: 0 5px 5px 0;
+}
+
+.input-bar {
+  display: flex;
+}
+
+.input-bar__text {
+  background-color: var(--color-palette-second);
+  border: 2px solid #adb5c5;
+  display: flex;
+  padding: 10px 10px 0px 20px;
+}
+
+.input-bar__text p {
+  color: var(--color-secondary);
+  font-size: var(--font-size-x-small);
+  font-weight: var(--font-weight-heavy);
+  text-transform: uppercase;
+}
+
+.icone-dropdown-arrow {
+  height: 10px;
+  padding-left: 10px;
+  width: 15px;
+}
+
+.icone-dropdown-arrow--input-bar {
+  height: 8px;
+  padding: 5px 25px 0 15px;
+  width: 13px;
+}
+
+header .input-bar__text,
+header .input-bar__input {
+  margin-bottom: 55px;
+  margin-top: 55px;
+}
+
+
+
+.input-bar__text:hover {
+  background-color: var(--color-primary-second-variation);
+}
+
+/* 右侧 */
+/* SOUS MENU connexion/inscripition ------------*/
+.menu__sous-menu li {
+  padding: 10px;
+}
+
+.menu__sous-menu li a {
+  color: var(--color-palette-first);
+  font-size: var(--font-size-default);
+}
+
+.menu__sous-menu li a:hover {
+  color: var(--color-primary-second-variation);
+}
+
+.menu__sous-menu--header {
+  flex-grow: 2;
+  justify-content: right;
+  margin-right: 100px;
+  margin-top: 55px;
+}
+
+.menu__sous-menu--header--login {
+  flex-grow: 2;
+  justify-content: right;
+  margin-right: 100px;
+  margin-top: 32px;
+}
+
+.menu__item {
+  color: var(--color-primary-second-variation);
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-medium);
+  position: relative;
+  text-transform: uppercase;
+}
+
+.menu__sous-menu--header li:first-of-type:after {
+  content: "";
+  background: white;
+  position: absolute;
+  top: 12%;
+  right: 0;
+  height: 20%;
+  width: 1px;
+}
+
+.divid:after {
+  content: "";
+  background: white;
+  position: absolute;
+  top: 35%;
+  right: 0;
+  height: 30%;
+  width: 1px;
+}
+/* @media only screen and (min-width: 1200px) {
+  .header {
+      display: block;
+  }
+} */
+
+/* style barre de recherche mobile|tablet */
+.input-bar--tablet {
+  display: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .input-bar--tablet {
+      display: flex;
+      padding: 55px 100px 50px 55px;
+  }
+
+  .input-bar--tablet .input-bar__input {
+      border-radius: 0 5px 5px 0;
+  }
+
+  .input-bar--mobile {
+      display: none;
+  }
+}

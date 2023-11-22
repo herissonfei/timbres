@@ -16,38 +16,45 @@ window.addEventListener("DOMContentLoaded", function () {
      * Ouverture du menu
      * @param {Event} click, évènement de type click.
      */
-    elBurger.addEventListener("click", function () {
-        if (elMenu.classList.contains("menu--close")) {
-            elMenu.classList.replace("menu--close", "menu--open");
+    if (elBurger) {
+        elBurger.addEventListener("click", function () {
+            if (elMenu.classList.contains("menu--close")) {
+                elMenu.classList.replace("menu--close", "menu--open");
 
-            // Ajoute la propriété overflow-y: hidden; sur les éléments html et body afin d'enlever le scroll en Y lorsque le modal est ouvert
-            elHTML.classList.add("overflow-y--hidden");
-            elBody.classList.add("overflow-y--hidden");
-        }
-    });
+                // Ajoute la propriété overflow-y: hidden; sur les éléments html et body afin d'enlever le scroll en Y lorsque le modal est ouvert
+                elHTML.classList.add("overflow-y--hidden");
+                elBody.classList.add("overflow-y--hidden");
+            }
+        });
+    }
 
     /**
      * Fermeture du menu
      * @param {Event} click, évènement de type click
      */
-    elClose.addEventListener("click", function () {
-        if (elMenu.classList.contains("menu--open")) {
-            elMenu.classList.replace("menu--open", "menu--transition");
+    if (elClose) {
+        elClose.addEventListener("click", function () {
+            if (elMenu.classList.contains("menu--open")) {
+                elMenu.classList.replace("menu--open", "menu--transition");
 
-            /**
-             * @param {Event} transitionend, évènement de type transitionend.
-             */
-            elMenu.addEventListener("transitionend", function (e) {
-                if (e.propertyName == "left") {
-                    elMenu.classList.replace("menu--transition", "menu--close");
-                }
-            });
+                /**
+                 * @param {Event} transitionend, évènement de type transitionend.
+                 */
+                elMenu.addEventListener("transitionend", function (e) {
+                    if (e.propertyName == "left") {
+                        elMenu.classList.replace(
+                            "menu--transition",
+                            "menu--close"
+                        );
+                    }
+                });
 
-            // Enlève la propriété overflow-y: hidden; sur les éléments html et body afin de rendre de nouveau possible le scroll en Y lorsque le modal est fermé
-            elHTML.classList.remove("overflow-y--hidden");
-            elBody.classList.remove("overflow-y--hidden");
-        }
-    });
+                // Enlève la propriété overflow-y: hidden; sur les éléments html et body afin de rendre de nouveau possible le scroll en Y lorsque le modal est fermé
+                elHTML.classList.remove("overflow-y--hidden");
+                elBody.classList.remove("overflow-y--hidden");
+            }
+        });
+    }
 
     //** SEARCH BAR MOBILE **/
     if (elSearch) {

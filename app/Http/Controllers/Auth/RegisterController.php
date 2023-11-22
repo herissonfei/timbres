@@ -5,10 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
-use App\Models\Cellier;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -55,8 +53,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:4', 'confirmed'],
-            // 'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'privilege' => ['required'],
+            'userProfileID' => ['required'],
         ]);
     }
 
@@ -68,20 +65,11 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        // $cellier = "La cave d'Ali Baba";
-        $cellier = 'Cellier de ' . $data['name'];
-        $last_user_id = DB::table('users')->latest('id')->value('id') + 1;
-        DB::table('celliers')->insert([
-            'nom'     => $cellier,
-            'user_id' => $last_user_id
-        ]);
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'userProfileID' => $data['userProfileID'],
             'password' => Hash::make($data['password']),
-            'privilege' => $data['privilege'],
         ]);
-   
-        return true;
     }
 }

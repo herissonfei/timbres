@@ -113,7 +113,7 @@ select {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background-image: url(../../assets/img/png/icone-dropdown-arrow-blue.png);
+    background-image: url(/img/png/icone-dropdown-arrow-blue.png);
     background-position: 125px;
     background-repeat: no-repeat;
     background-size: 12px;
@@ -1125,7 +1125,7 @@ button {
             rgba(0, 0, 0, 0.8) 100%,
             rgba(0, 0, 0, 0) 10%
         ),
-        url(../../assets/img/jpg/hero-accueil.jpg);
+        url(img/jpg/hero-accueil.jpg);
     background-color: var(--color-secondary);
     background-position: center;
     background-repeat: no-repeat;
@@ -1164,7 +1164,7 @@ button {
             rgba(0, 0, 0, 0.8) 100%,
             rgba(0, 0, 0, 0) 10%
         ),
-        url(../../assets/img/jpg/hero-catalogue-enchere.jpg);
+        url(img/jpg/hero-catalogue-enchere.jpg);
     padding-bottom: 150px;
     padding-top: 150px;
 }
@@ -1190,7 +1190,7 @@ button {
             rgba(0, 0, 0, 0.8) 100%,
             rgba(0, 0, 0, 0) 10%
         ),
-        url(../../assets/img/jpg/hero-enchere.jpg);
+        url(img/jpg/hero-enchere.jpg);
     padding-top: 50px;
     padding-bottom: 50px;
 }
@@ -1273,15 +1273,6 @@ button {
 }
 
 /* SÉPARATEURS menu ------------*/
-.menu__sous-menu--mobile li:first-of-type:after {
-    content: "";
-    background: white;
-    position: absolute;
-    top: 25%;
-    right: 0;
-    height: 45%;
-    width: 1px;
-}
 
 .menu__sous-menu--header li:first-of-type:after {
     content: "";
@@ -1314,18 +1305,6 @@ button {
 }
 
 /* SOUS MENU connexion/inscripition ------------*/
-.menu__sous-menu li {
-    padding: 10px;
-}
-
-.menu__sous-menu li a {
-    color: var(--color-palette-first);
-    font-size: var(--font-size-default);
-}
-
-.menu__sous-menu li a:hover {
-    color: var(--color-primary-second-variation);
-}
 
 .menu__sous-menu--header {
     flex-grow: 2;
@@ -1334,11 +1313,7 @@ button {
     margin-top: 55px;
 }
 
-.menu__sous-menu--mobile {
-    justify-content: center;
-    padding-left: 25px;
-    padding-top: 25px;
-}
+
 
 .menu__sous-menu--footer {
     justify-content: center;
@@ -2002,7 +1977,7 @@ nav li:hover .menu__dropdown {
             rgba(0, 0, 0, 0.6) 100%,
             rgba(0, 0, 0, 0) 10%
         ),
-        url(../../assets/img/jpg/categories/categorie-1.jpg);
+        url(img/jpg/categories/categorie-1.jpg);
 }
 
 .tile__img-container--second {
@@ -2010,7 +1985,7 @@ nav li:hover .menu__dropdown {
             rgba(0, 0, 0, 0.6) 100%,
             rgba(0, 0, 0, 0) 10%
         ),
-        url(../../assets/img/jpg/categories/categorie-2.jpg);
+        url(img/jpg/categories/categorie-2.jpg);
 }
 
 .tile__img-container--third {
@@ -2018,7 +1993,7 @@ nav li:hover .menu__dropdown {
             rgba(0, 0, 0, 0.6) 100%,
             rgba(0, 0, 0, 0) 10%
         ),
-        url(../../assets/img/jpg/categories/categorie-3.jpg);
+        url(img/jpg/categories/categorie-3.jpg);
 }
 
 @media only screen and (min-width: 768px) {

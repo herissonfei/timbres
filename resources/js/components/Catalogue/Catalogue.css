@@ -6,3 +6,7 @@ a:not([href]):not([class]):hover {
 .wrapper--header .wrapperButton {
     width: 15vw;
 }
+
+.default {
+    margin-right: 6px;
+}

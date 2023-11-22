@@ -41,7 +41,33 @@
 }
 
 /* SÉPARATEURS menu ------------*/
-.menu__sous-menu--mobile li:first-of-type:after {
+/* .menu__sous-menu--mobile li:first-of-type:after {
+    content: "";
+    background: white;
+    position: absolute;
+    top: 25%;
+    right: 0;
+    height: 45%;
+    width: 1px;
+} */
+.mobile--login {
+    justify-content: center;
+    padding-left: 20px;
+    padding-top: 25px;
+    /* padding-right: 28px; */
+}
+
+.mobile--login li:first-of-type:after {
+    content: "";
+    background: white;
+    position: absolute;
+    top: 25%;
+    right: 0;
+    height: 45%;
+    width: 1px;
+}
+.mobile--after li:first-of-type:after,
+.mobile--after li:nth-child(2):after {
     content: "";
     background: white;
     position: absolute;
@@ -81,31 +107,11 @@
     width: 1px;
 }
 
-/* SOUS MENU connexion/inscripition ------------*/
-.menu__sous-menu li {
-    padding: 10px;
-}
-
-.menu__sous-menu li a {
-    color: var(--color-palette-first);
-    font-size: var(--font-size-default);
-}
-
-.menu__sous-menu li a:hover {
-    color: var(--color-primary-second-variation);
-}
-
-/* .menu__sous-menu--header {
-    flex-grow: 2;
-    justify-content: right;
-    margin-right: 100px;
-    margin-top: 55px;
-} */
-
 .menu__sous-menu--mobile {
     justify-content: center;
-    padding-left: 25px;
+    /* padding-left: 20px; */
     padding-top: 25px;
+    padding-right: 28px;
 }
 
 .menu__sous-menu--footer {

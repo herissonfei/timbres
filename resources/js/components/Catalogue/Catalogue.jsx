@@ -168,6 +168,32 @@ export default function Catalogue() {
         }
     };
 
+    // -----------------------------------------------------mobile recherche
+
+    const [isSearchbarOpen, setIsSearchbarOpen] = useState(false);
+    const openSearchbar = () => {
+        setIsSearchbarOpen(true);
+        document.documentElement.classList.add("overflow-y--hidden");
+        document.body.classList.add("overflow-y--hidden");
+    };
+
+    // 处理关闭搜索栏的函数
+    const closeSearchbar = () => {
+        document.documentElement.classList.remove("overflow-y--hidden");
+        document.body.classList.remove("overflow-y--hidden");
+
+        setIsSearchbarOpen(false);
+    };
+
+    // 处理过渡结束的函数
+    const handleTransitionEnd = (e) => {
+        if (e.propertyName === "left") {
+            // 在过渡结束后将菜单状态更改为关闭
+            document
+                .getElementById("searchbar")
+                .classList.replace("menu--transition", "menu--close");
+        }
+    };
     return (
         <div>
             {/* <!-- HERO --> */}
@@ -210,7 +236,9 @@ export default function Catalogue() {
                     >
                         <option disabled>Trier</option>
                         <option value="tous">Tous</option>
-                        <option value="decroissant">Prix décroissant &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </option>
+                        <option value="decroissant">
+                            Prix décroissant &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;{" "}
+                        </option>
                         <option value="croissant">Prix croissant</option>
                         {/* <option value="popularite">Par popularité</option> */}
                         {/* <option value="nouvellement-liste">
@@ -235,9 +263,19 @@ export default function Catalogue() {
                         </div>
                     </div>
                 </div>
-                {/* <button className="burger burger-search btn" aria-label="burger" data-js-search>Recherche Avancée<img width="5"
-					src="img/png/icone-link-arrow.png" alt="fleche dropwdown" />
-			</button> */}
+                <button
+                    className="burger burger-search btn"
+                    aria-label="burger"
+                    data-js-search
+                    onClick={openSearchbar}
+                >
+                    Recherche Avancée
+                    <img
+                        width="5"
+                        src="img/png/icone-link-arrow.png"
+                        alt="fleche dropwdown"
+                    />
+                </button>
             </div>
 
             <Pagination
@@ -500,42 +538,40 @@ export default function Catalogue() {
                                 </div>
                             </section> */}
                             <div className="wrapper--header">
-                                <div className="wrapperButton">
-                                    <button
-                                        type="submit"
+                                <div>
+                                    <a
+                                        className="btn btn--text-icone default"
                                         onClick={handleParDefault}
                                     >
-                                        <a className="btn btn--text-icone">
-                                            Par défaut
-                                            <img
-                                                width="15"
-                                                src="img/png/icone-round-arrow-orange.png"
-                                                alt="icone fleche par defaut"
-                                            />
-                                        </a>
-                                    </button>
-                                    <button
-                                        type="submit"
+                                        Par défaut
+                                        <img
+                                            width="15"
+                                            src="img/png/icone-round-arrow-orange.png"
+                                            alt="icone fleche par defaut"
+                                        />
+                                    </a>
+                                    <a
+                                        className="btn btn--text-icone"
+                                        href="#"
                                         onClick={handleChercher}
                                     >
-                                        <a
-                                            className="btn btn--text-icone"
-                                            // href="#"
-                                        >
-                                            Chercher
-                                        </a>
-                                    </button>
+                                        Chercher
+                                    </a>
                                 </div>
                             </div>
                         </form>
                     </div>
 
-                    {/* <!-- ASIDE MOBILE RECHERCHE AVANCÉE --> */}
-                    {/* 底下是手机的先不要管_______________________________________________ */}
+                    {/* <!--------------------- ASIDE MOBILE RECHERCHE AVANCÉE --------------------------> */}
+
                     <aside
-                        className="menu__mobile menu--close menu__mobile--white"
+                        id="searchbar"
+                        className={`menu__mobile--white menu__mobile menu ${
+                            isSearchbarOpen ? "menu--open" : "menu--close"
+                        }`}
                         aria-label="aside-search-close"
                         data-js-search-bar
+                        onTransitionEnd={handleTransitionEnd}
                     >
                         {/* <!-- Bouton close --> */}
                         <div
@@ -545,6 +581,7 @@ export default function Catalogue() {
                             <button
                                 className="menu__close"
                                 aria-label="aside-search-close-btn"
+                                onClick={closeSearchbar}
                             ></button>
                         </div>
 
@@ -671,7 +708,7 @@ export default function Catalogue() {
                                 </section>
                                 <div className="wrapper--header-mobile">
                                     <div>
-                                        <a className="btn btn--text-icone">
+                                        <a className="btn btn--text-icone default">
                                             Par défaut
                                             <img
                                                 src="img/png/icone-round-arrow-orange.png"

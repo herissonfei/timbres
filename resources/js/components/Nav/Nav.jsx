@@ -94,20 +94,6 @@ export default function Nav() {
                         </a>
                     </li>
                 </ul>
-                {/* <!-- menu hamburger --> */}
-                {/* <div className="menu__logo"><a href="index.html"><img src="/img/png/logo.png" alt="logo Stampee"/></a></div>
-			<div className="input-bar input-bar--tablet">
-				<div className="input-bar__text">
-					<p>Avancée</p>
-					<img className="icone-dropdown-arrow icone-dropdown-arrow--input-bar" src="/img/png/icone-dropdown-arrow-blue.png" alt="fleche dropwdown"/>
-				</div>
-				<input className="input-bar__input" type="text" id="input-bar-tablet" name="input-bar" placeholder="Trouvez une enchère"/>
-			</div>
-			<button className="burger" aria-label="burger"  data-js-burger>
-				<span className="burger__bar"></span>
-                <span className="burger__bar"></span>
-                <span className="burger__bar"></span>
-            </button> */}
             </nav>
         </div>
     );

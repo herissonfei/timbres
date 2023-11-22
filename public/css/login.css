@@ -1,0 +1,97 @@
+.login-box {
+    background-color: #f1efe5;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin: 0px auto;
+    min-width: 100px;
+    max-width: 600px;
+    padding: 20px;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+input[type="submit"] {
+    background-color: #f9a211;
+    color: #fff;
+    /* color: #2b3858; */
+    font-size: 18px;
+    font-weight: 700;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #2b3858;
+    color: #fff;
+}
+
+.error_message {
+    color: red;
+    padding-bottom: 10px;
+}
+
+.login_submit {
+    margin-top: 20px;
+}
+
+.login-box h2 {
+    font-weight: bolder;
+    text-align: center;
+}
+
+.returnLogo {
+    text-align: center;
+    background-color: #2b3858;
+    margin: 0px auto;
+    padding-top: 12px;
+    min-width: 100px;
+    max-width: 710px;
+    border-radius: 5px 5px 0 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.loginDiv {
+    display: flex;
+    transform: translateY(-80px);
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* 使用视口高度单位，确保容器占据整个浏览器窗口的高度 */
+    width: 100vw; /* 使用视口宽度单位，确保容器占据整个浏览器窗口的宽度 */
+}
+
+.loginDiv div {
+    width: 640px;
+}
+
+@media screen and (max-width: 1200px) {
+    .loginDiv div {
+        width: 540px;
+    }
+
+    .login-box {
+        max-width: 500px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .loginDiv div {
+        width: 340px;
+    }
+
+    .login-box {
+        max-width: 300px;
+    }
+}
