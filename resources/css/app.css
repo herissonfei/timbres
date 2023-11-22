@@ -736,9 +736,15 @@ button {
     }
 }
 
-@media only screen and (min-width: 1200px) {
+/* @media only screen and (min-width: 1200px) {
     .burger,
     button {
+        display: none;
+    }
+} */
+
+@media only screen and (min-width: 1200px) {
+    .burger {
         display: none;
     }
 }
@@ -1312,8 +1318,6 @@ button {
     margin-right: 100px;
     margin-top: 55px;
 }
-
-
 
 .menu__sous-menu--footer {
     justify-content: center;

@@ -418,7 +418,7 @@ export default function Publish() {
                         </div>
 
                         <button className="blue">
-                            télécharger
+                            Publier
                         </button>
                     </div>
                 </form>
