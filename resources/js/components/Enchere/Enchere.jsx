@@ -11,6 +11,8 @@ export default function Enchere() {
 
     const [user, setUser] = useState(null);
     const [reservePrice, setreservePrice] = useState("");
+    const [minPrice, setminPrice] = useState("");
+
     const [newPrice, setnewPrice] = useState("");
     const bidsHistorique = [];
     // console.log(bid);
@@ -20,6 +22,7 @@ export default function Enchere() {
         axios.get(`/getOneBid/${id}`).then((res) => {
             setBid(res.data[0]);
             setreservePrice(parseFloat(res.data[0].reservePrice));
+            setminPrice(parseFloat(res.data[0].reservePrice) + 0.5);
         });
     }, []);
 
@@ -88,7 +91,8 @@ export default function Enchere() {
         if (!isNaN(newPrice) && newPrice >= reservePrice + 0.5) {
             setreservePrice(newPrice);
         }
-
+        // console.log(minPrice);
+        // console.log(reservePrice);
         // setreservePrice(newPrice);
     }, [newPrice, reservePrice]);
 
@@ -96,19 +100,12 @@ export default function Enchere() {
         e.preventDefault();
         axios.get(`/checkUser`).then((res) => {
             if (res.data) {
-                // console.log(res.data);
-                // console.log(reservePrice);
                 setUser(res.data);
                 axios
                     .patch(`/enchere/miser/${bid.id}`, {
                         reservePrice: reservePrice,
                     })
                     .then((response) => {
-                        // console.log(response);
-                        // console.log(response.config.data);
-
-                        // console.log(response.data);
-                        // axios.get
                         axios.get(`/getOneBid/${id}`).then((res) => {
                             setBid(res.data[0]);
                             setreservePrice(
@@ -126,8 +123,24 @@ export default function Enchere() {
         e.preventDefault();
         axios.get(`/checkUser`).then((res) => {
             if (res.data) {
-                console.log(res.data);
+                // console.log(res.data);
                 setUser(res.data);
+                axios
+                    .patch(`/enchere/miser/${bid.id}`, {
+                        reservePrice: minPrice,
+                    })
+                    .then((response) => {
+                        axios.get(`/getOneBid/${id}`).then((res) => {
+                            // console.log(res.data[0]);
+                            setBid(res.data[0]);
+                            setminPrice(
+                                parseFloat(res.data[0].reservePrice) + 0.5
+                            );
+                            setreservePrice(
+                                parseFloat(res.data[0].reservePrice)
+                            );
+                        });
+                    });
             } else {
                 window.location.pathname = "/login";
             }
