@@ -120,8 +120,9 @@ export default function Catalogue() {
         setselectedCategoriesConditions([]);
         setSelectedCategoriesTypes([]);
         axios.get("/getAllBids").then((res) => {
-            // console.log(res.data);
-            setBids(res.data);
+            console.log(res.data);
+            setBids(res.data.slice(0, 10));
+            // setBids(res.data);
         });
         setSelectedOption("Tous les pays");
     };

@@ -11,6 +11,7 @@ export default function Enchere() {
 
     const [user, setUser] = useState(null);
     const [reservePrice, setreservePrice] = useState("");
+    const [newPrice, setnewPrice] = useState("");
     const bidsHistorique = [];
     // console.log(bid);
     // console.log(parseFloat(reservePrice));
@@ -78,6 +79,19 @@ export default function Enchere() {
         };
     }
 
+    const handleInputChange = (event) => {
+        setnewPrice(parseFloat(event.target.value));
+    };
+
+    useEffect(() => {
+        // 在这里检查新值是否大于原有值加0.5
+        if (!isNaN(newPrice) && newPrice >= reservePrice + 0.5) {
+            setreservePrice(newPrice);
+        }
+
+        // setreservePrice(newPrice);
+    }, [newPrice, reservePrice]);
+
     function handleMiser(e) {
         e.preventDefault();
         axios.get(`/checkUser`).then((res) => {
@@ -93,11 +107,13 @@ export default function Enchere() {
                         // console.log(response);
                         // console.log(response.config.data);
 
-                        console.log(response.data);
+                        // console.log(response.data);
                         // axios.get
                         axios.get(`/getOneBid/${id}`).then((res) => {
                             setBid(res.data[0]);
-                            setreservePrice(parseFloat(res.data[0].reservePrice));
+                            setreservePrice(
+                                parseFloat(res.data[0].reservePrice)
+                            );
                         });
                     });
             } else {
@@ -308,16 +324,26 @@ export default function Enchere() {
 
                                     <small>Fin: {bid.endDate} | 00H00</small>
                                 </div>
+                                {/* <span>1</span> */}
                                 <div className="grid grid--3-btn">
                                     <input
                                         type="number"
-                                        value={reservePrice}
-                                        onChange={(event) => {
-                                            setreservePrice(event.target.value);
-                                        }}
-                                        // placeholder="min 10.70"
+                                        // value={reservePrice}
+                                        onChange={handleInputChange}
+                                        placeholder={reservePrice}
                                     />
-                                    <a className="btn" onClick={handleMiser}>
+                                    <a
+                                        className="btn"
+                                        onClick={handleMiser}
+                                        style={{
+                                            pointerEvents:
+                                                newPrice >=
+                                                parseFloat(bid.reservePrice) +
+                                                    0.5
+                                                    ? "auto"
+                                                    : "none",
+                                        }}
+                                    >
                                         Miser
                                     </a>
                                     <a className="btn" onClick={handleMin}>
