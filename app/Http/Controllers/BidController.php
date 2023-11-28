@@ -200,7 +200,7 @@ class BidController extends Controller
         $image->move(public_path('img\jpg\encheres'), $fileName);
 
         // 返回成功响应
-        return response()->json(['message' => '图片上传成功', 'url' => asset('img/jpg/encheres/' . $fileName)], 200);
+        return response()->json(['message' => '图片上传成功', 'url' => asset('/img/jpg/encheres/' . $fileName)], 200);
     }
 
     // 返回失败响应

@@ -46,7 +46,7 @@ export default function Home() {
                         </a>
                         <img
                             className="icone-link-arrow"
-                            src="img/png/icone-link-arrow.png"
+                            src="/img/png/icone-link-arrow.png"
                             alt="icone fleche link"
                         />
                     </div>
@@ -56,7 +56,7 @@ export default function Home() {
                             Repérez l'icone{" "}
                             <img
                                 className="icone-coup-coeur"
-                                src="img/png/icone-coup-de-coeur.png"
+                                src="/img/png/icone-coup-de-coeur.png"
                                 alt="icone coup de coeur lord"
                             />{" "}
                             afin de trouver les enchères favorites de notre
@@ -67,7 +67,7 @@ export default function Home() {
                         </a>
                         <img
                             className="icone-link-arrow"
-                            src="img/png/icone-link-arrow-blue.png"
+                            src="/img/png/icone-link-arrow-blue.png"
                             alt="icone fleche link"
                         />
                     </div>
@@ -100,11 +100,11 @@ export default function Home() {
 									<p className="tile__lot">Lot #<strong>23</strong></p>
 									<p className="tile__lot tile__lot--red"><strong>14d-8h-56m-2s</strong></p>
 								</div>
-								<img className="icone-coup-coeur" src="img/png/icone-coup-de-coeur.png" alt="icone coup de coeur lord"/>
+								<img className="icone-coup-coeur" src="/img/png/icone-coup-de-coeur.png" alt="icone coup de coeur lord"/>
 							</div>
 							<div className="tile__wrapper">
 								<div className="tile__img-wrapper">
-									<a href="enchere.html"><img className="tile__img" src="img/jpg/hero-enchere.jpg" alt="Image d'une enchère'"/></a>
+									<a href="enchere.html"><img className="tile__img" src="/img/jpg/hero-enchere.jpg" alt="Image d'une enchère'"/></a>
 								</div>
 								<h3>CYPRUS 95 LH</h3>
 								<p className="tile__text">Mise courante | <span>1&nbsp;offre</span></p>
@@ -122,7 +122,7 @@ export default function Home() {
 							</div>
 							<div className="tile__wrapper">
 								<div className="tile__img-wrapper">
-									<img className="tile__img" src="img/jpg/encheres/timbre-2.jpg" alt="Image d'une enchère'"/>
+									<img className="tile__img" src="/img/jpg/encheres/timbre-2.jpg" alt="Image d'une enchère'"/>
 								</div>
 								<h3>US California Scott #1</h3>
 								<p className="tile__text">Mise courante | <span>5&nbsp;offres</span></p>
@@ -140,7 +140,7 @@ export default function Home() {
 							</div>
 							<div className="tile__wrapper">
 								<div className="tile__img-wrapper">
-									<img className="tile__img" src="img/jpg/encheres/timbre-3.jpg" alt="Image d'une enchère"/>
+									<img className="tile__img" src="/img/jpg/encheres/timbre-3.jpg" alt="Image d'une enchère"/>
 								</div>
 								<h3>USA 1857 Scott #36 Used. Deep color</h3>
 								<p className="tile__text">Mise courante | <span>10&nbsp;offres</span></p>
@@ -155,11 +155,11 @@ export default function Home() {
 									<p className="tile__lot">Lot #<strong>121</strong></p>
 									<p className="tile__lot tile__lot--red"><strong>10h-50m-05s</strong></p>
 								</div>
-								<img className="icone-coup-coeur" src="img/png/icone-coup-de-coeur.png" alt="icone coup de coeur lord"/>
+								<img className="icone-coup-coeur" src="/img/png/icone-coup-de-coeur.png" alt="icone coup de coeur lord"/>
 							</div>
 							<div className="tile__wrapper">
 								<div className="tile__img-wrapper">
-									<img className="tile__img" src="img/jpg/encheres/timbre-4.jpg" alt="Image d'une enchère"/>
+									<img className="tile__img" src="/img/jpg/encheres/timbre-4.jpg" alt="Image d'une enchère"/>
 								</div>
 								<h3>AFFORDABLE GENUINE SCOTT USED SET</h3>
 								<p className="tile__text">Mise courante | <span>2&nbsp;offres</span></p>
@@ -177,7 +177,7 @@ export default function Home() {
 							</div>
 							<div className="tile__wrapper">
 								<div className="tile__img-wrapper">
-									<img className="tile__img" src="img/jpg/encheres/timbre-5.jpg" alt="Image d'une enchère"/>
+									<img className="tile__img" src="/img/jpg/encheres/timbre-5.jpg" alt="Image d'une enchère"/>
 								</div>
 								<h3>Used 50¢ XF Well Centered GEM With PFC Graded</h3>
 								<p className="tile__text">Mise courante | <span>Aucune&nbsp;offre</span></p>
@@ -223,7 +223,7 @@ export default function Home() {
 						<div className="tile bg--tile-white">
 							<small>Publié le 06/04/2022</small>
 							<div className="tile__container">
-								<img  src="img/jpg/actualites/article-1.jpg" alt="Image du premier article"/>
+								<img  src="/img/jpg/actualites/article-1.jpg" alt="Image du premier article"/>
 								<a className="btn" href="#">Lire l'article</a>
 							</div>
 							<h4>Comment j'ai appris à regarder les timbres</h4>
@@ -238,7 +238,7 @@ export default function Home() {
 						<div className="tile bg--tile-white">
 							<small>Publié le 05/04/2022</small>
 							<div className="tile__container">
-								<img  src="img/jpg/actualites/article-2.jpg" alt="Image du deuxième article"/>
+								<img  src="/img/jpg/actualites/article-2.jpg" alt="Image du deuxième article"/>
 								<a className="btn" href="#">Lire l'article</a>
 							</div>
 							<h4>Paradis des enchères - Une heure à Londre</h4>
@@ -252,16 +252,16 @@ export default function Home() {
 						</div>
 						<div className="tile tile--no-bg">
 							<a href="#"><div className="tile__container bg--no-bg">
-								<img width="75" src="img/png/icone-timbre.png" alt="Icone d'un timbre"/>
-								<p className="link--border">Timbres</p><img className="icone-link-arrow" src="img/png/icone-link-arrow.png" alt="icone fleche link"/>
+								<img width="75" src="/img/png/icone-timbre.png" alt="Icone d'un timbre"/>
+								<p className="link--border">Timbres</p><img className="icone-link-arrow" src="/img/png/icone-link-arrow.png" alt="icone fleche link"/>
 							</div></a>
 							<a href="#"><div className="tile__container bg--no-bg">
-								<img width="75" src="img/png/icone-enchere.png" alt="Icone d'un marteau"/>
-								<p className="link--border">Enchères</p><img className="icone-link-arrow" src="img/png/icone-link-arrow.png" alt="icone fleche link"/>
+								<img width="75" src="/img/png/icone-enchere.png" alt="Icone d'un marteau"/>
+								<p className="link--border">Enchères</p><img className="icone-link-arrow" src="/img/png/icone-link-arrow.png" alt="icone fleche link"/>
 							</div></a>
 							<a href="#"><div className="tile__container bg--no-bg bg--no-bg-border">
-								<img width="75" src="img/png/icone-bridge.png" alt="Icone d'un jeu de carte"/>
-								<p className="link--border">Bridge</p><img className="icone-link-arrow" src="img/png/icone-link-arrow.png" alt="icone fleche link"/>
+								<img width="75" src="/img/png/icone-bridge.png" alt="Icone d'un jeu de carte"/>
+								<p className="link--border">Bridge</p><img className="icone-link-arrow" src="/img/png/icone-link-arrow.png" alt="icone fleche link"/>
 							</div></a>
 						</div>
 					</div>
@@ -274,7 +274,7 @@ export default function Home() {
 					<div className="grid grid--2">
 						<div className="tile bg--tile">
 							<div className="tile__container-text-img">
-								<img className="tile__img tile__img-container tile__img--border" src="img/jpg/lord-stampee.jpg" alt="Image du Lord"/>
+								<img className="tile__img tile__img-container tile__img--border" src="/img/jpg/lord-stampee.jpg" alt="Image du Lord"/>
 								<div className="tile__container-text">
 									<h3>Une plateforme pour les passionné(e)s</h3>
 									<p>

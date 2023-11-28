@@ -211,20 +211,20 @@ export default function ListePrive() {
                     <div className="wrapper--header menu-secondaire__icone">
                         <div className="btn">
                             <img
-                                src="img/png/icone-gallery-1.png"
+                                src="/img/png/icone-gallery-1.png"
                                 alt="gallerie vertical"
                             />
                         </div>
                         <div className="btn">
                             <img
-                                src="img/png/icone-gallery-2.png"
+                                src="/img/png/icone-gallery-2.png"
                                 alt="gallerie horizontal"
                             />
                         </div>
                     </div>
                 </div>
                 {/* <button className="burger burger-search btn" aria-label="burger" data-js-search>Recherche Avancée<img width="5"
-					src="img/png/icone-link-arrow.png" alt="fleche dropwdown" />
+					src="/img/png/icone-link-arrow.png" alt="fleche dropwdown" />
 			</button> */}
             </div>
             <Pagination
@@ -493,7 +493,7 @@ export default function ListePrive() {
                                         Par défaut
                                         <img
                                             width="15"
-                                            src="img/png/icone-round-arrow-orange.png"
+                                            src="/img/png/icone-round-arrow-orange.png"
                                             alt="icone fleche par defaut"
                                         />
                                     </a>
@@ -661,7 +661,7 @@ export default function ListePrive() {
                                         >
                                             Par défaut
                                             <img
-                                                src="img/png/icone-round-arrow-orange.png"
+                                                src="/img/png/icone-round-arrow-orange.png"
                                                 alt="icone fleche par defaut"
                                             />
                                         </a>
@@ -698,7 +698,7 @@ export default function ListePrive() {
                                     </div>
                                     <img
                                         className="icone-coup-coeur"
-                                        src="img/png/icone-coup-de-coeur.png"
+                                        src="/img/png/icone-coup-de-coeur.png"
                                         alt="icone coup de coeur lord"
                                     />
                                 </div>
@@ -707,7 +707,7 @@ export default function ListePrive() {
                                         <a href="enchere.html">
                                             <img
                                                 className="tile__img"
-                                                src="img/jpg/hero-enchere.jpg"
+                                                src="/img/jpg/hero-enchere.jpg"
                                                 alt="Image d'une enchère'"
                                             />
                                         </a>
@@ -751,7 +751,7 @@ export default function ListePrive() {
                                         </div>
                                         <img
                                             className="icone-coup-coeur"
-                                            src="img/png/icone-coup-de-coeur.png"
+                                            src="/img/png/icone-coup-de-coeur.png"
                                             alt="icone coup de coeur lord"
                                         />
                                     </div>
@@ -806,7 +806,7 @@ export default function ListePrive() {
                             <a>
                                 <img
                                     width="10"
-                                    src="img/png/icone-link-arrow-blue-left.png"
+                                    src="/img/png/icone-link-arrow-blue-left.png"
                                     alt="fleche dropwdown"
                                 />
                             </a>
@@ -850,7 +850,7 @@ export default function ListePrive() {
                             <a>
                                 <img
                                     width="10"
-                                    src="img/png/icone-link-arrow-blue.png"
+                                    src="/img/png/icone-link-arrow-blue.png"
                                     alt="fleche dropwdown"
                                 />
                             </a>

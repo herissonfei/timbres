@@ -126,7 +126,7 @@
 			<div class="input-bar input-bar--tablet">
 				<div class="input-bar__text">
 					<p>Avancée</p>
-					<img class="icone-dropdown-arrow icone-dropdown-arrow--input-bar" src="img/png/icone-dropdown-arrow-blue.png" alt="fleche dropwdown"/>
+					<img class="icone-dropdown-arrow icone-dropdown-arrow--input-bar" src="/img/png/icone-dropdown-arrow-blue.png" alt="fleche dropwdown"/>
 				</div>
 				<input class="input-bar__input" type="text" id="input-bar-tablet" name="input-bar" placeholder="Trouvez une enchère"/>
 			</div>
@@ -140,7 +140,7 @@
         <div class="input-bar input-bar--mobile" role="search" aria-label="search-bar-input">
             <div class="input-bar__text">
                 <p>Avancée</p>
-                <img class="icone-dropdown-arrow icone-dropdown-arrow--input-bar" src="img/png/icone-dropdown-arrow-blue.png" alt="fleche dropwdown"/>
+                <img class="icone-dropdown-arrow icone-dropdown-arrow--input-bar" src="/img/png/icone-dropdown-arrow-blue.png" alt="fleche dropwdown"/>
             </div>
             <input class="input-bar__input" type="text" id="input-bar-mobile" name="input-bar" placeholder="Trouvez une enchère"/>
 		</div>
@@ -174,7 +174,7 @@
 				</li>
                 <li class="menu__item menu__item--principal"><a class="menu__link" href="#">contactez-nous</a></li>
             </ul>
-            <a href="index.html"><img class="footer__logo" src="img/png/logo.png" alt="logo Stampee"/></a>
+            <a href="index.html"><img class="footer__logo" src="/img/png/logo.png" alt="logo Stampee"/></a>
 			<!-- Connexion/Inscription -->
 			<!-- <ul class="wrapper--header menu__sous-menu menu__sous-menu--mobile ">
 				<li class="menu__item"><a href="{{ route('login') }}">Se connecter</a></li>

@@ -1135,7 +1135,7 @@ button {
             rgba(0, 0, 0, 0.8) 100%,
             rgba(0, 0, 0, 0) 10%
         ),
-        url(img/jpg/hero-accueil.jpg);
+        url(/img/jpg/hero-accueil.jpg);
     background-color: var(--color-secondary);
     background-position: center;
     background-repeat: no-repeat;
@@ -1174,7 +1174,7 @@ button {
             rgba(0, 0, 0, 0.8) 100%,
             rgba(0, 0, 0, 0) 10%
         ),
-        url(img/jpg/hero-catalogue-enchere.jpg);
+        url(/img/jpg/hero-catalogue-enchere.jpg);
     padding-bottom: 150px;
     padding-top: 150px;
 }
@@ -1200,7 +1200,7 @@ button {
             rgba(0, 0, 0, 0.8) 100%,
             rgba(0, 0, 0, 0) 10%
         ),
-        url(img/jpg/hero-enchere.jpg);
+        url(/img/jpg/hero-enchere.jpg);
     padding-top: 50px;
     padding-bottom: 50px;
 }
@@ -1985,7 +1985,7 @@ nav li:hover .menu__dropdown {
             rgba(0, 0, 0, 0.6) 100%,
             rgba(0, 0, 0, 0) 10%
         ),
-        url(img/jpg/categories/categorie-1.jpg);
+        url(/img/jpg/categories/categorie-1.jpg);
 }
 
 .tile__img-container--second {
@@ -1993,7 +1993,7 @@ nav li:hover .menu__dropdown {
             rgba(0, 0, 0, 0.6) 100%,
             rgba(0, 0, 0, 0) 10%
         ),
-        url(img/jpg/categories/categorie-2.jpg);
+        url(/img/jpg/categories/categorie-2.jpg);
 }
 
 .tile__img-container--third {
@@ -2001,7 +2001,7 @@ nav li:hover .menu__dropdown {
             rgba(0, 0, 0, 0.6) 100%,
             rgba(0, 0, 0, 0) 10%
         ),
-        url(img/jpg/categories/categorie-3.jpg);
+        url(/img/jpg/categories/categorie-3.jpg);
 }
 
 @media only screen and (min-width: 768px) {

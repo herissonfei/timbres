@@ -251,13 +251,13 @@ export default function Catalogue() {
                     <div className="wrapper--header menu-secondaire__icone">
                         <div className="btn">
                             <img
-                                src="img/png/icone-gallery-1.png"
+                                src="/img/png/icone-gallery-1.png"
                                 alt="gallerie vertical"
                             />
                         </div>
                         <div className="btn">
                             <img
-                                src="img/png/icone-gallery-2.png"
+                                src="/img/png/icone-gallery-2.png"
                                 alt="gallerie horizontal"
                             />
                         </div>
@@ -272,7 +272,7 @@ export default function Catalogue() {
                     Recherche Avancée
                     <img
                         width="5"
-                        src="img/png/icone-link-arrow.png"
+                        src="/img/png/icone-link-arrow.png"
                         alt="fleche dropwdown"
                     />
                 </button>
@@ -545,7 +545,7 @@ export default function Catalogue() {
                                         Par défaut
                                         <img
                                             width="15"
-                                            src="img/png/icone-round-arrow-orange.png"
+                                            src="/img/png/icone-round-arrow-orange.png"
                                             alt="icone fleche par defaut"
                                         />
                                     </a>
@@ -710,7 +710,7 @@ export default function Catalogue() {
                                         <a className="btn btn--text-icone default">
                                             Par défaut
                                             <img
-                                                src="img/png/icone-round-arrow-orange.png"
+                                                src="/img/png/icone-round-arrow-orange.png"
                                                 alt="icone fleche par defaut"
                                             />
                                         </a>
@@ -751,7 +751,7 @@ export default function Catalogue() {
                                         </div>
                                         <img
                                             className="icone-coup-coeur"
-                                            src="img/png/icone-coup-de-coeur.png"
+                                            src="/img/png/icone-coup-de-coeur.png"
                                             alt="icone coup de coeur lord"
                                         />
                                     </div>

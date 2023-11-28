@@ -36,7 +36,7 @@ export default function Pagination({
             >
                 <img
                     width="10"
-                    src="img/png/icone-link-arrow-blue-left.png"
+                    src="/img/png/icone-link-arrow-blue-left.png"
                     alt="fleche dropwdown"
                 />
             </div>
@@ -61,7 +61,7 @@ export default function Pagination({
             >
                 <img
                     width="10"
-                    src="img/png/icone-link-arrow-blue.png"
+                    src="/img/png/icone-link-arrow-blue.png"
                     alt="fleche dropwdown"
                 />
             </div>
