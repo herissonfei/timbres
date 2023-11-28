@@ -1,3 +1,12 @@
+a:not([href]):not([class]),
+a:not([href]):not([class]):hover {
+    color: var(--color-primary-second-variation);
+}
+
 .wrapper--header .wrapperButton {
     width: 15vw;
+}
+
+.default {
+    margin-right: 6px;
 }

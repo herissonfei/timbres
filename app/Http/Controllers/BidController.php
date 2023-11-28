@@ -74,6 +74,55 @@ class BidController extends Controller
         return response()->json($bids);
     }
 
+    public function filterPrive(Request $request)
+    {
+        //
+        // return response()->json(Auth::user()->id);
+        $id_user_connecte = Auth::user()->id;
+
+        $selectedCategoriesConditions = $request->input('selectedCategoriesConditions');
+        if ($selectedCategoriesConditions == []) {
+            $selectedCategoriesConditions = ['Parfaite', 'Excellente', 'Bonne', 'Moyenne', 'Endommagé'];
+        }
+        $selectedCategoriesTypes = $request->input('selectedCategoriesTypes');
+        if (empty($selectedCategoriesTypes)) {
+            $selectedCategoriesTypes = ['Général', 'Courrier Aérien', 'Livret', 'Port dû', 'Carte postale', 'Semi postal', 'Entier postal'];
+        }
+
+        $pays = $request->input('selectedOption');
+        
+        // return response()->json($pays);
+
+        $minPrix = $request->input('minPrix');
+        $maxPrix = $request->input('maxPrix');
+        
+        // return response()->json($selectedCategoriesTypes);
+
+        $query = Bid::select('bids.id', 'bids.bidStampId','bids.bidderId','bids.bidTime','bids.auctionCount','bids.startDate','bids.endDate','bids.favorites','stamps.name','stamps.startingPrice','stamps.reservePrice','stamps.creationDate','stamps.dimensions','stamps.country','stamps.conditions','stamps.status','stamps.certified','stamps.description','stamps.type', 'stampimages.imageURL')
+        ->join('stamps', 'stamps.id', '=', 'bids.bidStampId')
+        ->join('stampimages', 'stamps.id', '=', 'stampimages.stampId')
+        ->whereIn('stamps.conditions', $selectedCategoriesConditions)
+        ->whereIn('stamps.type', $selectedCategoriesTypes)
+        ->where('bids.bidderId', '=', $id_user_connecte);
+        
+        
+        if(($pays) && $pays != 'tous') {
+            $query->where('stamps.country','=', $pays);
+        }
+        if ($maxPrix <= 0) {
+            $query->where('stamps.reservePrice', '>=', $minPrix);
+        } else {
+            $query->where('stamps.reservePrice', '>=', $minPrix)
+                  ->where('stamps.reservePrice', '<=', $maxPrix);
+        }
+        
+        $bids = $query->get();
+        
+        
+        return response()->json($bids);
+
+    }
+
 
     public function filter(Request $request)
     {

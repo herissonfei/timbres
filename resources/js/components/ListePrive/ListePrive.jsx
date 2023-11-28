@@ -55,6 +55,111 @@ export default function ListePrive() {
             setBidsCount(res.data);
         });
     }, []);
+
+    // --------------------------------------------------------------------从catalogue那边复制过来的，需要改
+    // checkbox CONDITION
+    const [selectedCategoriesConditions, setselectedCategoriesConditions] =
+        useState([]);
+
+    const handleCategoryChange = (category) => {
+        if (selectedCategoriesConditions.includes(category)) {
+            setselectedCategoriesConditions(
+                selectedCategoriesConditions.filter((cat) => cat !== category)
+            );
+        } else {
+            setselectedCategoriesConditions([
+                ...selectedCategoriesConditions,
+                category,
+            ]);
+        }
+    };
+
+    // checkbox TYPE
+    const [selectedCategoriesTypes, setSelectedCategoriesTypes] = useState([]);
+
+    const handleCheckboxchangeTypes = (category) => {
+        if (selectedCategoriesTypes.includes(category)) {
+            setSelectedCategoriesTypes(
+                selectedCategoriesTypes.filter((cat) => cat !== category)
+            );
+        } else {
+            setSelectedCategoriesTypes([...selectedCategoriesTypes, category]);
+        }
+    };
+
+    // Prix
+    const [minPrix, setMinPrix] = useState(0);
+    const [maxPrix, setMaxPrix] = useState(0);
+
+    const handleMinPrixChange = (event) => {
+        setMinPrix(parseInt(event.target.value));
+    };
+
+    const handleMaxPrixChange = (event) => {
+        setMaxPrix(parseInt(event.target.value));
+    };
+
+    // ANNÉE D'ÉMISSION
+    const [minAnnee, setMinAnnee] = useState(1900);
+    const [maxAnnee, setMaxAnnee] = useState(2023);
+
+    const handleMinAnneeChange = (event) => {
+        if (
+            isNaN(parseInt(event.target.value))
+            // ||
+            // parseInt(event.target.value) < 1900
+        ) {
+            setMinAnnee(1900);
+        } else {
+            setMinAnnee(parseInt(event.target.value));
+        }
+    };
+
+    const handleMaxAnneeChange = (event) => {
+        setMaxAnnee(parseInt(event.target.value));
+    };
+
+    const [selectedOption, setSelectedOption] = useState("");
+
+    const handleSelectChange = (event) => {
+        setSelectedOption(event.target.value);
+    };
+
+    const handleParDefault = (event) => {
+        event.preventDefault();
+        // console.log("par default");
+        // 将checkbox改为未选中
+        setselectedCategoriesConditions([]);
+        setSelectedCategoriesTypes([]);
+        axios.get("/getBidsPrive").then((res) => {
+            console.log(res.data);
+            setBidsPrive(res.data.slice(0, 10));
+            // setBids(res.data);
+        });
+        setSelectedOption("Tous les pays");
+    };
+
+    const handleChercher = (event) => {
+        event.preventDefault();
+        console.log("1");
+
+        const data = {
+            selectedCategoriesConditions,
+            selectedCategoriesTypes,
+            minAnnee,
+            maxAnnee,
+            minPrix,
+            maxPrix,
+            selectedOption,
+        };
+
+        axios.post("/enchere/filterPrive", data).then((res) => {
+            console.log("这是后端返回来的数据", res.data);
+            // console.log(res.data.length);
+            setBidsPrive(res.data);
+        });
+    };
+
     return (
         <div>
             <div className="hero hero--page-interieure">
@@ -140,51 +245,71 @@ export default function ListePrive() {
                                 <div>
                                     <input
                                         type="checkbox"
-                                        id="parfaite"
-                                        value="parfaite"
-                                        name="parfaite"
+                                        checked={selectedCategoriesConditions.includes(
+                                            "Parfaite"
+                                        )}
+                                        onChange={() =>
+                                            handleCategoryChange("Parfaite")
+                                        }
                                     />
                                     <label>Parfaite</label>
                                 </div>
                                 <div>
                                     <input
                                         type="checkbox"
-                                        id="excellente"
-                                        value="excellente"
-                                        name="excellente"
+                                        checked={selectedCategoriesConditions.includes(
+                                            "Excellente"
+                                        )}
+                                        onChange={() =>
+                                            handleCategoryChange("Excellente")
+                                        }
                                     />
                                     <label>Excellente</label>
                                 </div>
                                 <div>
                                     <input
                                         type="checkbox"
-                                        id="bonne"
-                                        value="bonne"
+                                        checked={selectedCategoriesConditions.includes(
+                                            "Bonne"
+                                        )}
+                                        onChange={() =>
+                                            handleCategoryChange("Bonne")
+                                        }
                                     />
                                     <label>Bonne</label>
                                 </div>
                                 <div>
                                     <input
                                         type="checkbox"
-                                        id="moyenne"
-                                        value="moyenne"
-                                        name="moyenne"
+                                        checked={selectedCategoriesConditions.includes(
+                                            "Moyenne"
+                                        )}
+                                        onChange={() =>
+                                            handleCategoryChange("Moyenne")
+                                        }
                                     />
                                     <label>Moyenne</label>
                                 </div>
                                 <div>
                                     <input
                                         type="checkbox"
-                                        id="endommage"
-                                        value="endommage"
-                                        name="endommage"
+                                        checked={selectedCategoriesConditions.includes(
+                                            "Endommagé"
+                                        )}
+                                        onChange={() =>
+                                            handleCategoryChange("Endommagé")
+                                        }
                                     />
                                     <label>Endommagé</label>
                                 </div>
                             </section>
                             <section>
                                 <h3>Pays d'origine</h3>
-                                <select aria-label="select-country">
+                                <select
+                                    aria-label="select-country"
+                                    value={selectedOption}
+                                    onChange={handleSelectChange}
+                                >
                                     <option defaultValue value="tous">
                                         Tous les pays
                                     </option>
@@ -207,16 +332,18 @@ export default function ListePrive() {
                                     <div className="wrapper--header">
                                         <input
                                             type="number"
-                                            name="prix"
                                             placeholder="00.00"
+                                            value={minPrix}
+                                            onChange={handleMinPrixChange}
                                         />
                                         <span>$&nbsp;-</span>
                                     </div>
                                     <div className="wrapper--header">
                                         <input
                                             type="number"
-                                            name="prix"
                                             aria-label="input-price"
+                                            value={maxPrix}
+                                            onChange={handleMaxPrixChange}
                                         />
                                         <span>$</span>
                                     </div>
@@ -228,61 +355,92 @@ export default function ListePrive() {
                                     {/* 这一块的name可能需要删除 */}
                                     <input
                                         type="checkbox"
-                                        id="general"
-                                        value="general"
-                                        name="general"
+                                        checked={selectedCategoriesTypes.includes(
+                                            "Général"
+                                        )}
+                                        onChange={() =>
+                                            handleCheckboxchangeTypes("Général")
+                                        }
                                     />
                                     <label>Général</label>
                                 </div>
                                 <div>
                                     <input
                                         type="checkbox"
-                                        id="aerien"
-                                        value="aerien"
-                                        name="aerien"
+                                        checked={selectedCategoriesTypes.includes(
+                                            "Courrier Aérien"
+                                        )}
+                                        onChange={() =>
+                                            handleCheckboxchangeTypes(
+                                                "Courrier Aérien"
+                                            )
+                                        }
                                     />
                                     <label>Courrier Aérien</label>
                                 </div>
                                 <div>
                                     <input
                                         type="checkbox"
-                                        id="livret"
-                                        value="livret"
+                                        checked={selectedCategoriesTypes.includes(
+                                            "Livret"
+                                        )}
+                                        onChange={() =>
+                                            handleCheckboxchangeTypes("Livret")
+                                        }
                                     />
                                     <label>Livret</label>
                                 </div>
                                 <div>
                                     <input
                                         type="checkbox"
-                                        id="port-du"
-                                        value="port-du"
-                                        name="port-du"
+                                        checked={selectedCategoriesTypes.includes(
+                                            "Port dû"
+                                        )}
+                                        onChange={() =>
+                                            handleCheckboxchangeTypes("Port dû")
+                                        }
                                     />
                                     <label>Port dû</label>
                                 </div>
                                 <div>
                                     <input
                                         type="checkbox"
-                                        id="carte-postale"
-                                        value="carte-postale"
+                                        checked={selectedCategoriesTypes.includes(
+                                            "Carte postale"
+                                        )}
+                                        onChange={() =>
+                                            handleCheckboxchangeTypes(
+                                                "Carte postale"
+                                            )
+                                        }
                                     />
                                     <label>Carte postale</label>
                                 </div>
                                 <div>
                                     <input
                                         type="checkbox"
-                                        id="semi-postal"
-                                        value="semi-postal"
-                                        name="semi-postal"
+                                        checked={selectedCategoriesTypes.includes(
+                                            "Semi postal"
+                                        )}
+                                        onChange={() =>
+                                            handleCheckboxchangeTypes(
+                                                "Semi postal"
+                                            )
+                                        }
                                     />
                                     <label>Semi postal</label>
                                 </div>
                                 <div>
                                     <input
                                         type="checkbox"
-                                        id="entier-postal"
-                                        value="entier-postal"
-                                        name="entier-postal"
+                                        checked={selectedCategoriesTypes.includes(
+                                            "Entier postal"
+                                        )}
+                                        onChange={() =>
+                                            handleCheckboxchangeTypes(
+                                                "Entier postal"
+                                            )
+                                        }
                                     />
                                     <label>Entier postal</label>
                                 </div>
@@ -293,19 +451,21 @@ export default function ListePrive() {
                                     <div className="wrapper--header">
                                         <input
                                             type="number"
-                                            name="annee"
                                             aria-label="input-year-min"
+                                            value={minAnnee}
+                                            onChange={handleMinAnneeChange}
                                         />
                                         <span>-</span>
                                     </div>
                                     <input
                                         type="number"
-                                        name="annee"
                                         aria-label="input-year-max"
+                                        value={maxAnnee}
+                                        onChange={handleMaxAnneeChange}
                                     />
                                 </div>
                             </section>
-                            <section>
+                            {/* <section>
                                 <h3>Dimensions (pouces)</h3>
                                 <div className="wrapper--header">
                                     <div className="wrapper--header">
@@ -323,10 +483,13 @@ export default function ListePrive() {
                                         aria-label="input-dimension-width"
                                     />
                                 </div>
-                            </section>
+                            </section> */}
                             <div className="wrapper--header">
                                 <div className="wrapperButton">
-                                    <a className="btn btn--text-icone">
+                                    <a
+                                        className="btn btn--text-icone default"
+                                        onClick={handleParDefault}
+                                    >
                                         Par défaut
                                         <img
                                             width="15"
@@ -334,7 +497,11 @@ export default function ListePrive() {
                                             alt="icone fleche par defaut"
                                         />
                                     </a>
-                                    <a className="btn btn--text-icone" href="#">
+                                    <a
+                                        className="btn btn--text-icone"
+                                        href="#"
+                                        onClick={handleChercher}
+                                    >
                                         Chercher
                                     </a>
                                 </div>
@@ -382,7 +549,11 @@ export default function ListePrive() {
                                 </section>
                                 <section>
                                     <h3>Pays d'origine</h3>
-                                    <select aria-label="mobile-select-country">
+                                    <select
+                                        aria-label="select-country"
+                                        value={selectedOption}
+                                        onChange={handleSelectChange}
+                                    >
                                         <option defaultValue value="tous">
                                             Tous les pays
                                         </option>
@@ -449,15 +620,17 @@ export default function ListePrive() {
                                         <div className="wrapper--header">
                                             <input
                                                 type="number"
-                                                name="annee"
-                                                aria-label="mobile-input-year-min"
+                                                aria-label="input-year-min"
+                                                value={minAnnee}
+                                                onChange={handleMinAnneeChange}
                                             />
                                             <span>-</span>
                                         </div>
                                         <input
                                             type="number"
-                                            name="annee"
-                                            aria-label="mobile-input-year-max"
+                                            aria-label="input-year-max"
+                                            value={maxAnnee}
+                                            onChange={handleMaxAnneeChange}
                                         />
                                     </div>
                                 </section>
@@ -482,7 +655,10 @@ export default function ListePrive() {
                                 </section>
                                 <div className="wrapper--header-mobile">
                                     <div>
-                                        <a className="btn btn--text-icone">
+                                        <a
+                                            className="btn btn--text-icone default"
+                                            onClick={handleParDefault}
+                                        >
                                             Par défaut
                                             <img
                                                 src="img/png/icone-round-arrow-orange.png"
@@ -492,6 +668,7 @@ export default function ListePrive() {
                                         <a
                                             className="btn btn--text-icone"
                                             href="#"
+                                            onClick={handleChercher}
                                         >
                                             Chercher
                                         </a>
@@ -618,7 +795,13 @@ export default function ListePrive() {
                     </div>
                 </div>
                 <div className="wrapper--header-page">
-                    <div className="menu__nav-page menu__nav-page--var">
+                    <Pagination
+                        currentPage={currentPage}
+                        totalPages={totalPages}
+                        onPageChange={handlePageChange}
+                        changeClass="false"
+                    />
+                    {/* <div className="menu__nav-page menu__nav-page--var">
                         <div>
                             <a>
                                 <img
@@ -672,7 +855,7 @@ export default function ListePrive() {
                                 />
                             </a>
                         </div>
-                    </div>
+                    </div> */}
                     <p className="gallery__text gallery__text--right">
                         142 enchères trouvées | 0 - 20 de 142
                     </p>

@@ -60,6 +60,7 @@ Route::get('/getBidsPrive', [BidController::class, 'getBidsPrive']);
 
 // bids的筛选
 Route::post("/enchere/filter", [BidController::class,'filter']);
+Route::post("/enchere/filterPrive", [BidController::class,'filterPrive']);
 // 获取bids的数量
 Route::get('/getBidsCount', [BidController::class, 'getBidsCount']);
 // 获取bidsPrive的数量

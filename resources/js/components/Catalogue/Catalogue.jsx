@@ -6,7 +6,6 @@ import axios from "axios";
 import Pagination from "../Pagination";
 
 export default function Catalogue() {
-    // TEST-------------------------------------
     const [currentPage, setCurrentPage] = useState(1);
 
     const handlePageChange = (newPage) => {
@@ -120,7 +119,7 @@ export default function Catalogue() {
         setselectedCategoriesConditions([]);
         setSelectedCategoriesTypes([]);
         axios.get("/getAllBids").then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
             setBids(res.data.slice(0, 10));
             // setBids(res.data);
         });
@@ -141,7 +140,7 @@ export default function Catalogue() {
         };
 
         axios.post("/enchere/filter", data).then((res) => {
-            // console.log("这是后端返回来的数据", res.data);
+            console.log("这是后端返回来的数据", res.data);
             // console.log(res.data.length);
             setBids(res.data);
         });
@@ -508,7 +507,6 @@ export default function Catalogue() {
                                             aria-label="input-year-min"
                                             value={minAnnee}
                                             onChange={handleMinAnneeChange}
-                                            // min={1900}
                                         />
                                         <span>-</span>
                                     </div>
