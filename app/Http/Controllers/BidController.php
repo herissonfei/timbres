@@ -16,7 +16,7 @@ class BidController extends Controller
     {
         //bids,  stamps, image的数据
 
-        $bids = Bid::select('bids.id', 'bids.bidStampId','bids.bidderId','bids.bidTime','bids.auctionCount','bids.startDate','bids.endDate','bids.favorites','stamps.name','stamps.startingPrice','stamps.reservePrice','stamps.creationDate','stamps.dimensions','stamps.country','stamps.conditions','stamps.status','stamps.certified','stamps.description','stamps.type', 'stampimages.imageURL')
+        $bids = Bid::select('bids.id', 'bids.bidStampId','bids.bidderId','bids.bidTime','bids.auctionCount','bids.startDate','bids.endDate','bids.favorites','stamps.name','stamps.startingprice','stamps.reservePrice','stamps.creationDate','stamps.dimensions','stamps.country','stamps.conditions','stamps.status','stamps.certified','stamps.description','stamps.type', 'stampimages.imageURL')
         ->join('stamps', 'stamps.id', '=', 'bids.bidStampId')
         ->join('stampimages', 'stamps.id', '=', 'stampimages.stampId')
         ->get();
@@ -47,7 +47,7 @@ class BidController extends Controller
     {
         //bids,  stamps
 
-        $bid = Bid::select('bids.id', 'bids.bidStampId','bids.bidderId','bids.bidTime','bids.auctionCount','bids.startDate','bids.endDate','bids.favorites','stamps.name','stamps.startingPrice','stamps.reservePrice','stamps.creationDate','stamps.dimensions','stamps.country','stamps.conditions','stamps.status','stamps.certified','stamps.description','stamps.type', 'stampimages.imageURL')
+        $bid = Bid::select('bids.id', 'bids.bidStampId','bids.bidderId','bids.bidTime','bids.auctionCount','bids.startDate','bids.endDate','bids.favorites','stamps.name','stamps.startingprice','stamps.reservePrice','stamps.creationDate','stamps.dimensions','stamps.country','stamps.conditions','stamps.status','stamps.certified','stamps.description','stamps.type', 'stampimages.imageURL')
         ->join('stamps', 'stamps.id', '=', 'bids.bidStampId')
         ->join('stampimages', 'stamps.id', '=', 'stampimages.stampId')
         ->where('bids.id', '=', $id)
@@ -65,7 +65,7 @@ class BidController extends Controller
 
 
         
-        $bids = Bid::select('bids.id', 'bids.bidStampId','bids.bidderId','bids.bidTime','bids.auctionCount','bids.startDate','bids.endDate','bids.favorites','stamps.name','stamps.startingPrice','stamps.reservePrice','stamps.creationDate','stamps.dimensions','stamps.country','stamps.conditions','stamps.status','stamps.certified','stamps.description','stamps.type', 'stampimages.imageURL')
+        $bids = Bid::select('bids.id', 'bids.bidStampId','bids.bidderId','bids.bidTime','bids.auctionCount','bids.startDate','bids.endDate','bids.favorites','stamps.name','stamps.startingprice','stamps.reservePrice','stamps.creationDate','stamps.dimensions','stamps.country','stamps.conditions','stamps.status','stamps.certified','stamps.description','stamps.type', 'stampimages.imageURL')
         ->join('stamps', 'stamps.id', '=', 'bids.bidStampId')
         ->join('stampimages', 'stamps.id', '=', 'stampimages.stampId')
         ->where('bids.bidderId', '=', $id_user_connecte)
@@ -98,7 +98,7 @@ class BidController extends Controller
         
         // return response()->json($selectedCategoriesTypes);
 
-        $query = Bid::select('bids.id', 'bids.bidStampId','bids.bidderId','bids.bidTime','bids.auctionCount','bids.startDate','bids.endDate','bids.favorites','stamps.name','stamps.startingPrice','stamps.reservePrice','stamps.creationDate','stamps.dimensions','stamps.country','stamps.conditions','stamps.status','stamps.certified','stamps.description','stamps.type', 'stampimages.imageURL')
+        $query = Bid::select('bids.id', 'bids.bidStampId','bids.bidderId','bids.bidTime','bids.auctionCount','bids.startDate','bids.endDate','bids.favorites','stamps.name','stamps.startingprice','stamps.reservePrice','stamps.creationDate','stamps.dimensions','stamps.country','stamps.conditions','stamps.status','stamps.certified','stamps.description','stamps.type', 'stampimages.imageURL')
         ->join('stamps', 'stamps.id', '=', 'bids.bidStampId')
         ->join('stampimages', 'stamps.id', '=', 'stampimages.stampId')
         ->whereIn('stamps.conditions', $selectedCategoriesConditions)
@@ -147,7 +147,7 @@ class BidController extends Controller
         
         // return response()->json($selectedCategoriesTypes);
 
-        $query = Bid::select('bids.id', 'bids.bidStampId','bids.bidderId','bids.bidTime','bids.auctionCount','bids.startDate','bids.endDate','bids.favorites','stamps.name','stamps.startingPrice','stamps.reservePrice','stamps.creationDate','stamps.dimensions','stamps.country','stamps.conditions','stamps.status','stamps.certified','stamps.description','stamps.type', 'stampimages.imageURL')
+        $query = Bid::select('bids.id', 'bids.bidStampId','bids.bidderId','bids.bidTime','bids.auctionCount','bids.startDate','bids.endDate','bids.favorites','stamps.name','stamps.startingprice','stamps.reservePrice','stamps.creationDate','stamps.dimensions','stamps.country','stamps.conditions','stamps.status','stamps.certified','stamps.description','stamps.type', 'stampimages.imageURL')
         ->join('stamps', 'stamps.id', '=', 'bids.bidStampId')
         ->join('stampimages', 'stamps.id', '=', 'stampimages.stampId')
         ->whereIn('stamps.conditions', $selectedCategoriesConditions)
@@ -219,7 +219,7 @@ class BidController extends Controller
                 // return $request->json()->all(); 
                 DB::table('stamps')->insert([
                     'name' => $request->name,
-                    'startingPrice' => $request->startingPrice,
+                    'startingprice' => $request->startingprice,
                     'reservePrice' => $request->reservePrice,
                     'creationDate' => $request->creationDate,
                     'dimensions' => $request->dimensions,

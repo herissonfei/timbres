@@ -5,7 +5,7 @@ import "./Publish.css";
 import axios from "axios";
 
 export default function Publish() {
-    const [startingPrice, setStartingPrice] = useState(10);
+    const [startingprice, setStartingPrice] = useState(10);
     const [reservePrice, setreservePrice] = useState(10);
     const [bidTime, setBidTime] = useState("2023-06-10");
     const [auctionCount, setAuctionCount] = useState(0);
@@ -45,7 +45,7 @@ export default function Publish() {
         event.preventDefault();
         const data = {
             country,
-            startingPrice,
+            startingprice,
             reservePrice,
             bidTime,
             auctionCount,
@@ -231,14 +231,14 @@ export default function Publish() {
                                 <div className="form-group">
                                     <label
                                         className="labelForm"
-                                        htmlFor="startingPrice"
+                                        htmlFor="startingprice"
                                     >
-                                        startingPrice:
+                                        startingprice:
                                     </label>
                                     <input
                                         type="number"
-                                        id="startingPrice"
-                                        value={startingPrice}
+                                        id="startingprice"
+                                        value={startingprice}
                                         onChange={(event) =>
                                             setStartingPrice(event.target.value)
                                         }
