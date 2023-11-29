@@ -10,19 +10,19 @@ export default function Enchere() {
     const [bid, setBid] = useState([]);
 
     const [user, setUser] = useState(null);
-    const [reservePrice, setreservePrice] = useState("");
+    const [reserveprice, setreservePrice] = useState("");
     const [minPrice, setminPrice] = useState("");
 
     const [newPrice, setnewPrice] = useState("");
     const bidsHistorique = [];
     // console.log(bid);
-    // console.log(parseFloat(reservePrice));
+    // console.log(parseFloat(reserveprice));
 
     useEffect(() => {
         axios.get(`/getOneBid/${id}`).then((res) => {
             setBid(res.data[0]);
-            setreservePrice(parseFloat(res.data[0].reservePrice));
-            setminPrice(parseFloat(res.data[0].reservePrice) + 0.5);
+            setreservePrice(parseFloat(res.data[0].reserveprice));
+            setminPrice(parseFloat(res.data[0].reserveprice) + 0.5);
         });
     }, []);
 
@@ -47,11 +47,11 @@ export default function Enchere() {
     // console.log(formattedDate);
 
     // console.log(new Date(formattedDate).getTime());
-    // console.log(new Date(bid.endDate).getTime());
+    // console.log(new Date(bid.enddate).getTime());
 
     const fermeDans =
-        new Date(bid.endDate).getTime() > new Date(formattedDate).getTime()
-            ? dateDifference(bid.endDate, formattedDate)
+        new Date(bid.enddate).getTime() > new Date(formattedDate).getTime()
+            ? dateDifference(bid.enddate, formattedDate)
             : "Fermé";
     // console.log(fermeDans);
     function dateDifference(date1, date2) {
@@ -88,13 +88,13 @@ export default function Enchere() {
 
     useEffect(() => {
         // 在这里检查新值是否大于原有值加0.5
-        if (!isNaN(newPrice) && newPrice >= reservePrice + 0.5) {
+        if (!isNaN(newPrice) && newPrice >= reserveprice + 0.5) {
             setreservePrice(newPrice);
         }
         // console.log(minPrice);
-        // console.log(reservePrice);
+        // console.log(reserveprice);
         // setreservePrice(newPrice);
-    }, [newPrice, reservePrice]);
+    }, [newPrice, reserveprice]);
 
     function handleMiser(e) {
         e.preventDefault();
@@ -103,13 +103,13 @@ export default function Enchere() {
                 setUser(res.data);
                 axios
                     .patch(`/enchere/miser/${bid.id}`, {
-                        reservePrice: reservePrice,
+                        reserveprice: reserveprice,
                     })
                     .then((response) => {
                         axios.get(`/getOneBid/${id}`).then((res) => {
                             setBid(res.data[0]);
                             setreservePrice(
-                                parseFloat(res.data[0].reservePrice)
+                                parseFloat(res.data[0].reserveprice)
                             );
                         });
                     });
@@ -127,17 +127,17 @@ export default function Enchere() {
                 setUser(res.data);
                 axios
                     .patch(`/enchere/miser/${bid.id}`, {
-                        reservePrice: minPrice,
+                        reserveprice: minPrice,
                     })
                     .then((response) => {
                         axios.get(`/getOneBid/${id}`).then((res) => {
                             // console.log(res.data[0]);
                             setBid(res.data[0]);
                             setminPrice(
-                                parseFloat(res.data[0].reservePrice) + 0.5
+                                parseFloat(res.data[0].reserveprice) + 0.5
                             );
                             setreservePrice(
-                                parseFloat(res.data[0].reservePrice)
+                                parseFloat(res.data[0].reserveprice)
                             );
                         });
                     });
@@ -181,7 +181,7 @@ export default function Enchere() {
                             <div className="tile__img-wrapper tile__img-wrapper--enchere">
                                 <img
                                     className="tile__img"
-                                    src={bid.imageURL}
+                                    src={bid.imageurl}
                                     alt="Image d'une enchère'"
                                 />
                             </div>
@@ -269,10 +269,10 @@ export default function Enchere() {
                                     <p className="tile__text">
                                         Mise courante |{" "}
                                         <strong>
-                                            {bid.auctionCount} offre
+                                            {bid.auctioncount} offre
                                         </strong>
                                     </p>
-                                    <h2>{bid.reservePrice}$</h2>
+                                    <h2>{bid.reserveprice}$</h2>
                                     <p className="tile__text-small">
                                         <small>
                                             {/* 之后再补 */}
@@ -296,7 +296,7 @@ export default function Enchere() {
                                     </p>
                                     <p>
                                         <strong>Année d'émission</strong> :{" "}
-                                        {bid.creationDate}
+                                        {bid.creationdate}
                                     </p>
                                     <p>
                                         <strong>Pays d'origine</strong> :{" "}
@@ -322,7 +322,7 @@ export default function Enchere() {
                                     <p>Ferme dans</p>
                                     <p className="tile__lot tile__lot--red">
                                         <strong>
-                                            {/* {new Date(bid.endDate)} */}
+                                            {/* {new Date(bid.enddate)} */}
                                             {fermeDans == "Fermé"
                                                 ? "Fermé"
                                                 : `${fermeDans.days}d-${fermeDans.hours}
@@ -331,19 +331,19 @@ export default function Enchere() {
                                         </strong>
                                     </p>
                                     <small>
-                                        Début: {bid.startDate} | 00H00
+                                        Début: {bid.startdate} | 00H00
                                     </small>
                                     <br />
 
-                                    <small>Fin: {bid.endDate} | 00H00</small>
+                                    <small>Fin: {bid.enddate} | 00H00</small>
                                 </div>
                                 {/* <span>1</span> */}
                                 <div className="grid grid--3-btn">
                                     <input
                                         type="number"
-                                        // value={reservePrice}
+                                        // value={reserveprice}
                                         onChange={handleInputChange}
-                                        placeholder={reservePrice}
+                                        placeholder={reserveprice}
                                     />
                                     <a
                                         className="btn"
@@ -351,7 +351,7 @@ export default function Enchere() {
                                         style={{
                                             pointerEvents:
                                                 newPrice >=
-                                                parseFloat(bid.reservePrice) +
+                                                parseFloat(bid.reserveprice) +
                                                     0.5
                                                     ? "auto"
                                                     : "none",

@@ -760,7 +760,7 @@ export default function ListePrive() {
                                             <a href="enchere.html">
                                                 <img
                                                     className="tile__img"
-                                                    src={bidPrive.imageURL}
+                                                    src={bidPrive.imageurl}
                                                     alt="Image d'une enchère'"
                                                 />
                                             </a>
@@ -769,7 +769,7 @@ export default function ListePrive() {
                                         <p className="tile__text">
                                             Mise courante |{" "}
                                             <span>
-                                                {bidPrive.auctionCount}
+                                                {bidPrive.auctioncount}
                                                 &nbsp;offre
                                             </span>
                                         </p>

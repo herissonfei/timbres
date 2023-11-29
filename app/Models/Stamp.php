@@ -12,8 +12,8 @@ class Stamp extends Model
     protected $fillable = [
         'name',
         'startingprice',
-        'reservePrice',
-        'creationDate',
+        'reserveprice',
+        'creationdate',
         'dimensions',
         'country',
         'conditions',

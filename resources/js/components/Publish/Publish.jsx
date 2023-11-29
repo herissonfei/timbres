@@ -6,16 +6,16 @@ import axios from "axios";
 
 export default function Publish() {
     const [startingprice, setStartingPrice] = useState(10);
-    const [reservePrice, setreservePrice] = useState(10);
-    const [bidTime, setBidTime] = useState("2023-06-10");
-    const [auctionCount, setAuctionCount] = useState(0);
-    const [bidderId, setBidderId] = useState("");
+    const [reserveprice, setreservePrice] = useState(10);
+    const [bidtime, setBidTime] = useState("2023-06-10");
+    const [auctioncount, setAuctionCount] = useState(0);
+    const [bidderid, setBidderId] = useState("");
     const [country, setCountry] = useState("Canada");
-    const [startDate, setStartDate] = useState("2023-06-10");
-    const [endDate, setEndDate] = useState("2023-06-17");
+    const [startdate, setStartDate] = useState("2023-06-10");
+    const [enddate, setEndDate] = useState("2023-06-17");
     const [favorites, setFavorites] = useState("oui");
     const [name, setName] = useState("stampName");
-    const [creationDate, setCreationDate] = useState("2003-06-17");
+    const [creationdate, setCreationDate] = useState("2003-06-17");
     const [dimensions, setDimensions] = useState("2cm x 3cm");
     const [conditions, setConditions] = useState("Excellente");
     const [status, setStatus] = useState("Available");
@@ -24,7 +24,7 @@ export default function Publish() {
         "Lorem ipsum dolor sit amet, consectetur adipis minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate"
     );
     const [type, setType] = useState("Regular");
-    const [imageURL, setImageURL] = useState("");
+    const [imageurl, setImageURL] = useState("");
     useEffect(() => {
         axios.get("/getUser").then((res) => {
             // console.log(res.data);
@@ -46,21 +46,21 @@ export default function Publish() {
         const data = {
             country,
             startingprice,
-            reservePrice,
-            bidTime,
-            auctionCount,
-            bidderId,
-            startDate,
-            endDate,
+            reserveprice,
+            bidtime,
+            auctioncount,
+            bidderid,
+            startdate,
+            enddate,
             favorites,
             name,
-            creationDate,
+            creationdate,
             dimensions,
             conditions,
             status,
             certified,
             description,
-            imageURL,
+            imageurl,
             type,
         };
         // console.log(selectedFile);
@@ -83,7 +83,7 @@ export default function Publish() {
                 console.error("上传失败！", error);
             }
         }
-        console.log(data.imageURL);
+        console.log(data.imageurl);
         // 在此处执行表单提交的逻辑
         // console.log("表单已提交");
         axios.post("/uploadFormData", data).then((res) => {
@@ -117,14 +117,14 @@ export default function Publish() {
                         <div className="box-container">
                             <div className="formContainer--div">
                                 {/* <div className="form-group">
-                            <label className="labelForm" htmlFor="bidderId">
+                            <label className="labelForm" htmlFor="bidderid">
                                 当前登录的用户的ID:
                             </label> */}
 
                                 <input
                                     type="hidden"
-                                    id="bidderId"
-                                    value={bidderId}
+                                    id="bidderid"
+                                    value={bidderid}
                                     onChange={(event) =>
                                         setBidderId(event.target.value)
                                     }
@@ -135,14 +135,14 @@ export default function Publish() {
                                 <div className="form-group">
                                     <label
                                         className="labelForm"
-                                        htmlFor="startDate"
+                                        htmlFor="startdate"
                                     >
-                                        startDate:
+                                        startdate:
                                     </label>
                                     <input
                                         type="date"
-                                        id="startDate"
-                                        value={startDate}
+                                        id="startdate"
+                                        value={startdate}
                                         onChange={(event) =>
                                             setStartDate(event.target.value)
                                         }
@@ -152,14 +152,14 @@ export default function Publish() {
                                 <div className="form-group">
                                     <label
                                         className="labelForm"
-                                        htmlFor="endDate"
+                                        htmlFor="enddate"
                                     >
-                                        endDate:
+                                        enddate:
                                     </label>
                                     <input
                                         type="date"
-                                        id="endDate"
-                                        value={endDate}
+                                        id="enddate"
+                                        value={enddate}
                                         onChange={(event) =>
                                             setEndDate(event.target.value)
                                         }
@@ -199,14 +199,14 @@ export default function Publish() {
                                 <div className="form-group">
                                     <label
                                         className="labelForm"
-                                        htmlFor="creationDate"
+                                        htmlFor="creationdate"
                                     >
-                                        creationDate:
+                                        creationdate:
                                     </label>
                                     <input
                                         type="date"
-                                        id="creationDate"
-                                        value={creationDate}
+                                        id="creationdate"
+                                        value={creationdate}
                                         onChange={(event) =>
                                             setCreationDate(event.target.value)
                                         }
@@ -215,14 +215,14 @@ export default function Publish() {
                                 <div className="form-group">
                                     <label
                                         className="labelForm"
-                                        htmlFor="bidTime"
+                                        htmlFor="bidtime"
                                     >
-                                        bidTime:
+                                        bidtime:
                                     </label>
                                     <input
                                         type="date"
-                                        id="bidTime"
-                                        value={bidTime}
+                                        id="bidtime"
+                                        value={bidtime}
                                         onChange={(event) =>
                                             setBidTime(event.target.value)
                                         }
@@ -247,14 +247,14 @@ export default function Publish() {
                                 <div className="form-group">
                                     <label
                                         className="labelForm"
-                                        htmlFor="reservePrice"
+                                        htmlFor="reserveprice"
                                     >
-                                        reservePrice:
+                                        reserveprice:
                                     </label>
                                     <input
                                         type="number"
-                                        id="reservePrice"
-                                        value={reservePrice}
+                                        id="reserveprice"
+                                        value={reserveprice}
                                         onChange={(event) =>
                                             setreservePrice(event.target.value)
                                         }
@@ -337,8 +337,6 @@ export default function Publish() {
                                     />
                                 </div>
 
-                               
-
                                 <div className="form-group">
                                     <label className="labelForm" htmlFor="type">
                                         type:
@@ -356,14 +354,14 @@ export default function Publish() {
                                 <div className="form-group">
                                     <label
                                         className="labelForm"
-                                        htmlFor="auctionCount"
+                                        htmlFor="auctioncount"
                                     >
-                                        auctionCount:
+                                        auctioncount:
                                     </label>
                                     <input
                                         type="number"
-                                        id="auctionCount"
-                                        value={auctionCount}
+                                        id="auctioncount"
+                                        value={auctioncount}
                                         onChange={(event) =>
                                             setAuctionCount(event.target.value)
                                         }
@@ -417,9 +415,7 @@ export default function Publish() {
                             </div>
                         </div>
 
-                        <button className="blue">
-                            Publier
-                        </button>
+                        <button className="blue">Publier</button>
                     </div>
                 </form>
             </div>

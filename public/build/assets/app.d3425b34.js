@@ -17026,12 +17026,12 @@ function CN() {
                 (console.log(F.target.value), F.target.value == "decroissant")
             ) {
                 const b = [...o].sort(
-                    (q, ee) => ee.reservePrice - q.reservePrice
+                    (q, ee) => ee.reserveprice - q.reserveprice
                 );
                 s(b);
             } else if (F.target.value == "croissant") {
                 const b = [...o].sort(
-                    (q, ee) => q.reservePrice - ee.reservePrice
+                    (q, ee) => q.reserveprice - ee.reserveprice
                 );
                 s(b);
             } else F.target.value == "tous" && s(r);
@@ -18054,7 +18054,7 @@ function CN() {
                                                                                     {
                                                                                         className:
                                                                                             "tile__img",
-                                                                                        src: F.imageURL,
+                                                                                        src: F.imageurl,
                                                                                         alt: "Image d'une ench\xE8re'",
                                                                                     }
                                                                                 ),
@@ -18076,7 +18076,7 @@ function CN() {
                                                                             {
                                                                                 children:
                                                                                     [
-                                                                                        F.auctionCount,
+                                                                                        F.auctioncount,
                                                                                         "\xA0offre",
                                                                                     ],
                                                                             }
@@ -18085,7 +18085,7 @@ function CN() {
                                                                 }),
                                                                 d("span", {
                                                                     children: [
-                                                                        F.reservePrice,
+                                                                        F.reserveprice,
                                                                         "$",
                                                                     ],
                                                                 }),
@@ -18164,8 +18164,8 @@ function xN() {
     I.exports.useEffect(() => {
         ae.get(`/getOneBid/${e}`).then((k) => {
             n(k.data[0]),
-                s(parseFloat(k.data[0].reservePrice)),
-                c(parseFloat(k.data[0].reservePrice) + 0.5);
+                s(parseFloat(k.data[0].reserveprice)),
+                c(parseFloat(k.data[0].reserveprice) + 0.5);
         });
     }, []);
     const h = new Date(),
@@ -18182,8 +18182,8 @@ function xN() {
             m
         ).padStart(2, "0")}`,
         g =
-            new Date(t.endDate).getTime() > new Date(p).getTime()
-                ? w(t.endDate, p)
+            new Date(t.enddate).getTime() > new Date(p).getTime()
+                ? w(t.enddate, p)
                 : "Ferm\xE9";
     function w(k, $) {
         const D = new Date(k).getTime(),
@@ -18210,11 +18210,11 @@ function xN() {
                 $.data
                     ? (i($.data),
                       ae
-                          .patch(`/enchere/miser/${t.id}`, { reservePrice: o })
+                          .patch(`/enchere/miser/${t.id}`, { reserveprice: o })
                           .then((D) => {
                               ae.get(`/getOneBid/${e}`).then((z) => {
                                   n(z.data[0]),
-                                      s(parseFloat(z.data[0].reservePrice));
+                                      s(parseFloat(z.data[0].reserveprice));
                               });
                           }))
                     : (window.location.pathname = "/login");
@@ -18226,15 +18226,15 @@ function xN() {
                 $.data
                     ? (i($.data),
                       ae
-                          .patch(`/enchere/miser/${t.id}`, { reservePrice: a })
+                          .patch(`/enchere/miser/${t.id}`, { reserveprice: a })
                           .then((D) => {
                               ae.get(`/getOneBid/${e}`).then((z) => {
                                   n(z.data[0]),
                                       c(
-                                          parseFloat(z.data[0].reservePrice) +
+                                          parseFloat(z.data[0].reserveprice) +
                                               0.5
                                       ),
-                                      s(parseFloat(z.data[0].reservePrice));
+                                      s(parseFloat(z.data[0].reserveprice));
                               });
                           }))
                     : (window.location.pathname = "/login");
@@ -18294,7 +18294,7 @@ function xN() {
                                             "tile__img-wrapper tile__img-wrapper--enchere",
                                         children: l("img", {
                                             className: "tile__img",
-                                            src: t.imageURL,
+                                            src: t.imageurl,
                                             alt: "Image d'une ench\xE8re'",
                                         }),
                                     }),
@@ -18362,7 +18362,7 @@ function xN() {
                                                                 " ",
                                                                 d("strong", {
                                                                     children: [
-                                                                        t.auctionCount,
+                                                                        t.auctioncount,
                                                                         " offre",
                                                                     ],
                                                                 }),
@@ -18370,7 +18370,7 @@ function xN() {
                                                         }),
                                                         d("h2", {
                                                             children: [
-                                                                t.reservePrice,
+                                                                t.reserveprice,
                                                                 "$",
                                                             ],
                                                         }),
@@ -18433,7 +18433,7 @@ function xN() {
                                                                 }),
                                                                 " :",
                                                                 " ",
-                                                                t.creationDate,
+                                                                t.creationdate,
                                                             ],
                                                         }),
                                                         d("p", {
@@ -18495,7 +18495,7 @@ function xN() {
                                                         d("small", {
                                                             children: [
                                                                 "D\xE9but: ",
-                                                                t.startDate,
+                                                                t.startdate,
                                                                 " | 00H00",
                                                             ],
                                                         }),
@@ -18503,7 +18503,7 @@ function xN() {
                                                         d("small", {
                                                             children: [
                                                                 "Fin: ",
-                                                                t.endDate,
+                                                                t.enddate,
                                                                 " | 00H00",
                                                             ],
                                                         }),
@@ -18525,7 +18525,7 @@ function xN() {
                                                                 pointerEvents:
                                                                     u >=
                                                                     parseFloat(
-                                                                        t.reservePrice
+                                                                        t.reserveprice
                                                                     ) +
                                                                         0.5
                                                                         ? "auto"
@@ -19046,21 +19046,21 @@ function TN() {
                         const q = {
                             country: f,
                             startingprice: e,
-                            reservePrice: n,
-                            bidTime: i,
-                            auctionCount: s,
-                            bidderId: c,
-                            startDate: v,
-                            endDate: _,
+                            reserveprice: n,
+                            bidtime: i,
+                            auctioncount: s,
+                            bidderid: c,
+                            startdate: v,
+                            enddate: _,
                             favorites: P,
                             name: p,
-                            creationDate: w,
+                            creationdate: w,
                             dimensions: T,
                             conditions: k,
                             status: D,
                             certified: V,
                             description: le,
-                            imageURL: S,
+                            imageurl: S,
                             type: Q,
                         };
                         if ((console.log(q), M)) {
@@ -19083,7 +19083,7 @@ function TN() {
                                 );
                             }
                         }
-                        console.log(q.imageURL),
+                        console.log(q.imageurl),
                             ae.post("/uploadFormData", q).then((ee) => {
                                 console.log(ee.data),
                                     (window.location.pathname = "/listePrive");
@@ -19102,7 +19102,7 @@ function TN() {
                                         children: [
                                             l("input", {
                                                 type: "hidden",
-                                                id: "bidderId",
+                                                id: "bidderid",
                                                 value: c,
                                                 onChange: (b) =>
                                                     u(b.target.value),
@@ -19112,12 +19112,12 @@ function TN() {
                                                 children: [
                                                     l("label", {
                                                         className: "labelForm",
-                                                        htmlFor: "startDate",
-                                                        children: "startDate:",
+                                                        htmlFor: "startdate",
+                                                        children: "startdate:",
                                                     }),
                                                     l("input", {
                                                         type: "date",
-                                                        id: "startDate",
+                                                        id: "startdate",
                                                         value: v,
                                                         onChange: (b) =>
                                                             y(b.target.value),
@@ -19129,12 +19129,12 @@ function TN() {
                                                 children: [
                                                     l("label", {
                                                         className: "labelForm",
-                                                        htmlFor: "endDate",
-                                                        children: "endDate:",
+                                                        htmlFor: "enddate",
+                                                        children: "enddate:",
                                                     }),
                                                     l("input", {
                                                         type: "date",
-                                                        id: "endDate",
+                                                        id: "enddate",
                                                         value: _,
                                                         onChange: (b) =>
                                                             E(b.target.value),
@@ -19180,13 +19180,13 @@ function TN() {
                                                 children: [
                                                     l("label", {
                                                         className: "labelForm",
-                                                        htmlFor: "creationDate",
+                                                        htmlFor: "creationdate",
                                                         children:
-                                                            "creationDate:",
+                                                            "creationdate:",
                                                     }),
                                                     l("input", {
                                                         type: "date",
-                                                        id: "creationDate",
+                                                        id: "creationdate",
                                                         value: w,
                                                         onChange: (b) =>
                                                             C(b.target.value),
@@ -19198,12 +19198,12 @@ function TN() {
                                                 children: [
                                                     l("label", {
                                                         className: "labelForm",
-                                                        htmlFor: "bidTime",
-                                                        children: "bidTime:",
+                                                        htmlFor: "bidtime",
+                                                        children: "bidtime:",
                                                     }),
                                                     l("input", {
                                                         type: "date",
-                                                        id: "bidTime",
+                                                        id: "bidtime",
                                                         value: i,
                                                         onChange: (b) =>
                                                             o(b.target.value),
@@ -19234,13 +19234,13 @@ function TN() {
                                                 children: [
                                                     l("label", {
                                                         className: "labelForm",
-                                                        htmlFor: "reservePrice",
+                                                        htmlFor: "reserveprice",
                                                         children:
-                                                            "reservePrice:",
+                                                            "reserveprice:",
                                                     }),
                                                     l("input", {
                                                         type: "number",
-                                                        id: "reservePrice",
+                                                        id: "reserveprice",
                                                         value: n,
                                                         onChange: (b) =>
                                                             r(b.target.value),
@@ -19354,13 +19354,13 @@ function TN() {
                                                 children: [
                                                     l("label", {
                                                         className: "labelForm",
-                                                        htmlFor: "auctionCount",
+                                                        htmlFor: "auctioncount",
                                                         children:
-                                                            "auctionCount:",
+                                                            "auctioncount:",
                                                     }),
                                                     l("input", {
                                                         type: "number",
-                                                        id: "auctionCount",
+                                                        id: "auctioncount",
                                                         value: s,
                                                         onChange: (b) =>
                                                             a(b.target.value),
@@ -20513,7 +20513,7 @@ function AN() {
                                                                                     {
                                                                                         className:
                                                                                             "tile__img",
-                                                                                        src: S.imageURL,
+                                                                                        src: S.imageurl,
                                                                                         alt: "Image d'une ench\xE8re'",
                                                                                     }
                                                                                 ),
@@ -20535,7 +20535,7 @@ function AN() {
                                                                             {
                                                                                 children:
                                                                                     [
-                                                                                        S.auctionCount,
+                                                                                        S.auctioncount,
                                                                                         "\xA0offre",
                                                                                     ],
                                                                             }

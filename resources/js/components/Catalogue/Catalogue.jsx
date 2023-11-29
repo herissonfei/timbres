@@ -154,13 +154,13 @@ export default function Catalogue() {
         console.log(event.target.value);
         if (event.target.value == "decroissant") {
             const Bidsdecroissant = [...bids].sort((a, b) => {
-                return b.reservePrice - a.reservePrice;
+                return b.reserveprice - a.reserveprice;
             });
             setBids(Bidsdecroissant);
         } else if (event.target.value == "croissant") {
             // console.log('2');
             const Bidscroissant = [...bids].sort((a, b) => {
-                return a.reservePrice - b.reservePrice;
+                return a.reserveprice - b.reserveprice;
             });
             setBids(Bidscroissant);
         } else if (event.target.value == "tous") {
@@ -760,7 +760,7 @@ export default function Catalogue() {
                                             <a href="enchere.html">
                                                 <img
                                                     className="tile__img"
-                                                    src={bid.imageURL}
+                                                    src={bid.imageurl}
                                                     alt="Image d'une enchère'"
                                                 />
                                             </a>
@@ -769,10 +769,10 @@ export default function Catalogue() {
                                         <p className="tile__text">
                                             Mise courante |{" "}
                                             <span>
-                                                {bid.auctionCount}&nbsp;offre
+                                                {bid.auctioncount}&nbsp;offre
                                             </span>
                                         </p>
-                                        <span>{bid.reservePrice}$</span>
+                                        <span>{bid.reserveprice}$</span>
                                         <p className="tile__text-small">
                                             <small>
                                                 {/* 回过头看 */}

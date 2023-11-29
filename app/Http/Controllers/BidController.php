@@ -16,8 +16,8 @@ class BidController extends Controller
     {
         //bids,  stamps, image的数据
 
-        $bids = Bid::select('bids.id', 'bids.bidStampId','bids.bidderId','bids.bidTime','bids.auctionCount','bids.startDate','bids.endDate','bids.favorites','stamps.name','stamps.startingprice','stamps.reservePrice','stamps.creationDate','stamps.dimensions','stamps.country','stamps.conditions','stamps.status','stamps.certified','stamps.description','stamps.type', 'stampimages.imageURL')
-        ->join('stamps', 'stamps.id', '=', 'bids.bidStampId')
+        $bids = Bid::select('bids.id', 'bids.bidstampid','bids.bidderid','bids.bidtime','bids.auctioncount','bids.startdate','bids.enddate','bids.favorites','stamps.name','stamps.startingprice','stamps.reserveprice','stamps.creationdate','stamps.dimensions','stamps.country','stamps.conditions','stamps.status','stamps.certified','stamps.description','stamps.type', 'stampimages.imageurl')
+        ->join('stamps', 'stamps.id', '=', 'bids.bidstampid')
         ->join('stampimages', 'stamps.id', '=', 'stampimages.stampId')
         ->get();
     
@@ -36,9 +36,9 @@ class BidController extends Controller
      {
         $id_user_connecte = Auth::user()->id;
 
-        $bidsPriveCount = Bid::join('stamps', 'stamps.id', '=', 'bids.bidStampId')
+        $bidsPriveCount = Bid::join('stamps', 'stamps.id', '=', 'bids.bidstampid')
             ->join('stampimages', 'stamps.id', '=', 'stampimages.stampId')
-            ->where('bids.bidderId', '=', $id_user_connecte)
+            ->where('bids.bidderid', '=', $id_user_connecte)
             ->count();   
         return $bidsPriveCount;
      }
@@ -47,8 +47,8 @@ class BidController extends Controller
     {
         //bids,  stamps
 
-        $bid = Bid::select('bids.id', 'bids.bidStampId','bids.bidderId','bids.bidTime','bids.auctionCount','bids.startDate','bids.endDate','bids.favorites','stamps.name','stamps.startingprice','stamps.reservePrice','stamps.creationDate','stamps.dimensions','stamps.country','stamps.conditions','stamps.status','stamps.certified','stamps.description','stamps.type', 'stampimages.imageURL')
-        ->join('stamps', 'stamps.id', '=', 'bids.bidStampId')
+        $bid = Bid::select('bids.id', 'bids.bidstampid','bids.bidderid','bids.bidtime','bids.auctioncount','bids.startdate','bids.enddate','bids.favorites','stamps.name','stamps.startingprice','stamps.reserveprice','stamps.creationdate','stamps.dimensions','stamps.country','stamps.conditions','stamps.status','stamps.certified','stamps.description','stamps.type', 'stampimages.imageurl')
+        ->join('stamps', 'stamps.id', '=', 'bids.bidstampid')
         ->join('stampimages', 'stamps.id', '=', 'stampimages.stampId')
         ->where('bids.id', '=', $id)
         ->get();
@@ -65,10 +65,10 @@ class BidController extends Controller
 
 
         
-        $bids = Bid::select('bids.id', 'bids.bidStampId','bids.bidderId','bids.bidTime','bids.auctionCount','bids.startDate','bids.endDate','bids.favorites','stamps.name','stamps.startingprice','stamps.reservePrice','stamps.creationDate','stamps.dimensions','stamps.country','stamps.conditions','stamps.status','stamps.certified','stamps.description','stamps.type', 'stampimages.imageURL')
-        ->join('stamps', 'stamps.id', '=', 'bids.bidStampId')
+        $bids = Bid::select('bids.id', 'bids.bidstampid','bids.bidderid','bids.bidtime','bids.auctioncount','bids.startdate','bids.enddate','bids.favorites','stamps.name','stamps.startingprice','stamps.reserveprice','stamps.creationdate','stamps.dimensions','stamps.country','stamps.conditions','stamps.status','stamps.certified','stamps.description','stamps.type', 'stampimages.imageurl')
+        ->join('stamps', 'stamps.id', '=', 'bids.bidstampid')
         ->join('stampimages', 'stamps.id', '=', 'stampimages.stampId')
-        ->where('bids.bidderId', '=', $id_user_connecte)
+        ->where('bids.bidderid', '=', $id_user_connecte)
         ->get();
        
         return response()->json($bids);
@@ -98,22 +98,22 @@ class BidController extends Controller
         
         // return response()->json($selectedCategoriesTypes);
 
-        $query = Bid::select('bids.id', 'bids.bidStampId','bids.bidderId','bids.bidTime','bids.auctionCount','bids.startDate','bids.endDate','bids.favorites','stamps.name','stamps.startingprice','stamps.reservePrice','stamps.creationDate','stamps.dimensions','stamps.country','stamps.conditions','stamps.status','stamps.certified','stamps.description','stamps.type', 'stampimages.imageURL')
-        ->join('stamps', 'stamps.id', '=', 'bids.bidStampId')
+        $query = Bid::select('bids.id', 'bids.bidstampid','bids.bidderid','bids.bidtime','bids.auctioncount','bids.startdate','bids.enddate','bids.favorites','stamps.name','stamps.startingprice','stamps.reserveprice','stamps.creationdate','stamps.dimensions','stamps.country','stamps.conditions','stamps.status','stamps.certified','stamps.description','stamps.type', 'stampimages.imageurl')
+        ->join('stamps', 'stamps.id', '=', 'bids.bidstampid')
         ->join('stampimages', 'stamps.id', '=', 'stampimages.stampId')
         ->whereIn('stamps.conditions', $selectedCategoriesConditions)
         ->whereIn('stamps.type', $selectedCategoriesTypes)
-        ->where('bids.bidderId', '=', $id_user_connecte);
+        ->where('bids.bidderid', '=', $id_user_connecte);
         
         
         if(($pays) && $pays != 'tous') {
             $query->where('stamps.country','=', $pays);
         }
         if ($maxPrix <= 0) {
-            $query->where('stamps.reservePrice', '>=', $minPrix);
+            $query->where('stamps.reserveprice', '>=', $minPrix);
         } else {
-            $query->where('stamps.reservePrice', '>=', $minPrix)
-                  ->where('stamps.reservePrice', '<=', $maxPrix);
+            $query->where('stamps.reserveprice', '>=', $minPrix)
+                  ->where('stamps.reserveprice', '<=', $maxPrix);
         }
         
         $bids = $query->get();
@@ -147,8 +147,8 @@ class BidController extends Controller
         
         // return response()->json($selectedCategoriesTypes);
 
-        $query = Bid::select('bids.id', 'bids.bidStampId','bids.bidderId','bids.bidTime','bids.auctionCount','bids.startDate','bids.endDate','bids.favorites','stamps.name','stamps.startingprice','stamps.reservePrice','stamps.creationDate','stamps.dimensions','stamps.country','stamps.conditions','stamps.status','stamps.certified','stamps.description','stamps.type', 'stampimages.imageURL')
-        ->join('stamps', 'stamps.id', '=', 'bids.bidStampId')
+        $query = Bid::select('bids.id', 'bids.bidstampid','bids.bidderid','bids.bidtime','bids.auctioncount','bids.startdate','bids.enddate','bids.favorites','stamps.name','stamps.startingprice','stamps.reserveprice','stamps.creationdate','stamps.dimensions','stamps.country','stamps.conditions','stamps.status','stamps.certified','stamps.description','stamps.type', 'stampimages.imageurl')
+        ->join('stamps', 'stamps.id', '=', 'bids.bidstampid')
         ->join('stampimages', 'stamps.id', '=', 'stampimages.stampId')
         ->whereIn('stamps.conditions', $selectedCategoriesConditions)
         ->whereIn('stamps.type', $selectedCategoriesTypes);
@@ -157,10 +157,10 @@ class BidController extends Controller
             $query->where('stamps.country','=', $pays);
         }
         if ($maxPrix <= 0) {
-            $query->where('stamps.reservePrice', '>=', $minPrix);
+            $query->where('stamps.reserveprice', '>=', $minPrix);
         } else {
-            $query->where('stamps.reservePrice', '>=', $minPrix)
-                  ->where('stamps.reservePrice', '<=', $maxPrix);
+            $query->where('stamps.reserveprice', '>=', $minPrix)
+                  ->where('stamps.reserveprice', '<=', $maxPrix);
         }
         
         $bids = $query->get();
@@ -220,8 +220,8 @@ class BidController extends Controller
                 DB::table('stamps')->insert([
                     'name' => $request->name,
                     'startingprice' => $request->startingprice,
-                    'reservePrice' => $request->reservePrice,
-                    'creationDate' => $request->creationDate,
+                    'reserveprice' => $request->reserveprice,
+                    'creationdate' => $request->creationdate,
                     'dimensions' => $request->dimensions,
                     'country' => $request->country,
                     'conditions' => $request->conditions,
@@ -232,18 +232,18 @@ class BidController extends Controller
                 ]);
                 $stampId = DB::table('stamps')->latest('id')->value('id');
                 DB::table('bids')->insert([
-                    'bidStampId' => $stampId,
-                    'bidderId' => $request->bidderId,
-                    'bidTime' => $request->bidTime,
-                    'startDate' => $request->startDate,
-                    'endDate' => $request->endDate,
+                    'bidstampid' => $stampId,
+                    'bidderid' => $request->bidderid,
+                    'bidtime' => $request->bidtime,
+                    'startdate' => $request->startdate,
+                    'enddate' => $request->enddate,
                     'favorites' => $request->favorites,
-                    'auctionCount' => $request->auctionCount
+                    'auctioncount' => $request->auctioncount
                 ]);
 
                 DB::table('stampimages')->insert([
                     'stampId' => $stampId,
-                    'imageURL' => $request->imageURL
+                    'imageurl' => $request->imageurl
                 ]);
    
     }
@@ -282,11 +282,11 @@ class BidController extends Controller
     public function update(Request $request, Stamp $stamp, Bid $bid, $id)
     {
         //
-        // return response()->json($request['reservePrice']);
+        // return response()->json($request['reserveprice']);
 
        
-        DB::table('stamps')->where('id',Bid::find($id)['bidStampId'])->update(['reservePrice' => $request['reservePrice']]);
-        $stamp = Stamp::find(Bid::find($id)['bidStampId']);
+        DB::table('stamps')->where('id',Bid::find($id)['bidstampid'])->update(['reserveprice' => $request['reserveprice']]);
+        $stamp = Stamp::find(Bid::find($id)['bidstampid']);
 
         return response()->json($stamp);
     }

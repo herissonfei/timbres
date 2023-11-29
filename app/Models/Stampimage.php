@@ -11,6 +11,6 @@ class Stampimage extends Model
 
     protected $fillable = [
         'stampId  ',
-        'imageURL '
+        'imageurl '
     ];
 }

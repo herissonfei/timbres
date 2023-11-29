@@ -9,12 +9,12 @@ class Bid extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'bidStampId ',
-        'bidderId ',
-        'bidTime',
-        'startDate',
-        'endDate',
+        'bidstampid ',
+        'bidderid ',
+        'bidtime',
+        'startdate',
+        'enddate',
         'favorites',
-        'auctionCount'
+        'auctioncount'
     ];
 }

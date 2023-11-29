@@ -1649,8 +1649,8 @@ svg {
 }
 input[type="date"],
 #startingprice,
-#reservePrice,
-#auctionCount,
+#reserveprice,
+#auctioncount,
 textarea {
     width: 100%;
     padding: 10px;
@@ -1720,8 +1720,8 @@ button[type="submit"] {
     }
     input[type="date"],
     #startingprice,
-    #reservePrice,
-    #auctionCount,
+    #reserveprice,
+    #auctioncount,
     textarea {
         width: 88%;
     }
