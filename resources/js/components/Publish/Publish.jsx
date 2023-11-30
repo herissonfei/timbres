@@ -95,7 +95,7 @@ export default function Publish() {
         axios
             .post("/uploadFormData", data)
             .then((res) => {
-                console.log(res.data);
+                console.log("post之内的", res.data);
                 console.log("这是post之内的", window.location.pathname);
 
                 window.location.pathname = "/listePrive";
