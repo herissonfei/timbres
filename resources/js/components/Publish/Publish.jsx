@@ -86,12 +86,28 @@ export default function Publish() {
         console.log(data.imageurl);
         // 在此处执行表单提交的逻辑
         // console.log("表单已提交");
-        axios.post("/uploadFormData", data).then((res) => {
-            console.log(res.data);
-            // window.history.back();
-            window.location.pathname = "/listePrive";
-        });
-        console.log(data);
+        // ----------------------------------------------------------------
+        // axios.post("/uploadFormData", data).then((res) => {
+        //     console.log(res.data);
+        //     // window.history.back();
+        //     window.location.pathname = "/listePrive";
+        // });
+        axios
+            .post("/uploadFormData", data)
+            .then((res) => {
+                console.log(res.data);
+                console.log("这是post之内的", window.location.pathname);
+
+                window.location.pathname = "/listePrive";
+            })
+            .catch((error) => {
+                console.error(
+                    "An error occurred during the POST request:",
+                    error
+                );
+            });
+        console.log("这是post之外的", window.location.pathname);
+        // console.log(data);
     };
     // const handleSubmit = async (event) => {
     //     event.preventDefault();
