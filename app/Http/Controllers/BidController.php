@@ -15,10 +15,10 @@ class BidController extends Controller
     public function getAllBids()
     {
         //bids,  stamps, image的数据
-
+        // $bids = Bid::count();
         $bids = Bid::select('bids.id', 'bids.bidstampid','bids.bidderid','bids.bidtime','bids.auctioncount','bids.startdate','bids.enddate','bids.favorites','stamps.name','stamps.startingprice','stamps.reserveprice','stamps.creationdate','stamps.dimensions','stamps.country','stamps.conditions','stamps.status','stamps.certified','stamps.description','stamps.type', 'stampimages.imageurl')
         ->join('stamps', 'stamps.id', '=', 'bids.bidstampid')
-        ->join('stampimages', 'stamps.id', '=', 'stampimages.stampId')
+        ->join('stampimages', 'stamps.id', '=', 'stampimages.stampid')
         ->get();
     
         return response()->json($bids);
@@ -37,7 +37,7 @@ class BidController extends Controller
         $id_user_connecte = Auth::user()->id;
 
         $bidsPriveCount = Bid::join('stamps', 'stamps.id', '=', 'bids.bidstampid')
-            ->join('stampimages', 'stamps.id', '=', 'stampimages.stampId')
+            ->join('stampimages', 'stamps.id', '=', 'stampimages.stampid')
             ->where('bids.bidderid', '=', $id_user_connecte)
             ->count();   
         return $bidsPriveCount;
@@ -49,7 +49,7 @@ class BidController extends Controller
 
         $bid = Bid::select('bids.id', 'bids.bidstampid','bids.bidderid','bids.bidtime','bids.auctioncount','bids.startdate','bids.enddate','bids.favorites','stamps.name','stamps.startingprice','stamps.reserveprice','stamps.creationdate','stamps.dimensions','stamps.country','stamps.conditions','stamps.status','stamps.certified','stamps.description','stamps.type', 'stampimages.imageurl')
         ->join('stamps', 'stamps.id', '=', 'bids.bidstampid')
-        ->join('stampimages', 'stamps.id', '=', 'stampimages.stampId')
+        ->join('stampimages', 'stamps.id', '=', 'stampimages.stampid')
         ->where('bids.id', '=', $id)
         ->get();
        
@@ -67,7 +67,7 @@ class BidController extends Controller
         
         $bids = Bid::select('bids.id', 'bids.bidstampid','bids.bidderid','bids.bidtime','bids.auctioncount','bids.startdate','bids.enddate','bids.favorites','stamps.name','stamps.startingprice','stamps.reserveprice','stamps.creationdate','stamps.dimensions','stamps.country','stamps.conditions','stamps.status','stamps.certified','stamps.description','stamps.type', 'stampimages.imageurl')
         ->join('stamps', 'stamps.id', '=', 'bids.bidstampid')
-        ->join('stampimages', 'stamps.id', '=', 'stampimages.stampId')
+        ->join('stampimages', 'stamps.id', '=', 'stampimages.stampid')
         ->where('bids.bidderid', '=', $id_user_connecte)
         ->get();
        
@@ -100,7 +100,7 @@ class BidController extends Controller
 
         $query = Bid::select('bids.id', 'bids.bidstampid','bids.bidderid','bids.bidtime','bids.auctioncount','bids.startdate','bids.enddate','bids.favorites','stamps.name','stamps.startingprice','stamps.reserveprice','stamps.creationdate','stamps.dimensions','stamps.country','stamps.conditions','stamps.status','stamps.certified','stamps.description','stamps.type', 'stampimages.imageurl')
         ->join('stamps', 'stamps.id', '=', 'bids.bidstampid')
-        ->join('stampimages', 'stamps.id', '=', 'stampimages.stampId')
+        ->join('stampimages', 'stamps.id', '=', 'stampimages.stampid')
         ->whereIn('stamps.conditions', $selectedCategoriesConditions)
         ->whereIn('stamps.type', $selectedCategoriesTypes)
         ->where('bids.bidderid', '=', $id_user_connecte);
@@ -149,7 +149,7 @@ class BidController extends Controller
 
         $query = Bid::select('bids.id', 'bids.bidstampid','bids.bidderid','bids.bidtime','bids.auctioncount','bids.startdate','bids.enddate','bids.favorites','stamps.name','stamps.startingprice','stamps.reserveprice','stamps.creationdate','stamps.dimensions','stamps.country','stamps.conditions','stamps.status','stamps.certified','stamps.description','stamps.type', 'stampimages.imageurl')
         ->join('stamps', 'stamps.id', '=', 'bids.bidstampid')
-        ->join('stampimages', 'stamps.id', '=', 'stampimages.stampId')
+        ->join('stampimages', 'stamps.id', '=', 'stampimages.stampid')
         ->whereIn('stamps.conditions', $selectedCategoriesConditions)
         ->whereIn('stamps.type', $selectedCategoriesTypes);
         
@@ -197,7 +197,7 @@ class BidController extends Controller
         $fileName = $image->getClientOriginalName(); 
 
         // 将上传的图片保存到 img\jpg\encheres/ 目录
-        $image->move(public_path('img\jpg\encheres'), $fileName);
+        $image->move(public_path('\img\jpg\encheres'), $fileName);
 
         // 返回成功响应
         return response()->json(['message' => '图片上传成功', 'url' => asset('/img/jpg/encheres/' . $fileName)], 200);
@@ -230,9 +230,9 @@ class BidController extends Controller
                     'description' => $request->description,
                     'type' => $request->type
                 ]);
-                $stampId = DB::table('stamps')->latest('id')->value('id');
+                $stampid = DB::table('stamps')->latest('id')->value('id');
                 DB::table('bids')->insert([
-                    'bidstampid' => $stampId,
+                    'bidstampid' => $stampid,
                     'bidderid' => $request->bidderid,
                     'bidtime' => $request->bidtime,
                     'startdate' => $request->startdate,
@@ -242,7 +242,7 @@ class BidController extends Controller
                 ]);
 
                 DB::table('stampimages')->insert([
-                    'stampId' => $stampId,
+                    'stampid' => $stampid,
                     'imageurl' => $request->imageurl
                 ]);
    

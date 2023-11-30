@@ -23,7 +23,7 @@ export default function Publish() {
     const [description, setDescription] = useState(
         "Lorem ipsum dolor sit amet, consectetur adipis minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate"
     );
-    const [type, setType] = useState("Regular");
+    const [type, setType] = useState("Général");
     const [imageurl, setImageURL] = useState("");
     useEffect(() => {
         axios.get("/getUser").then((res) => {
@@ -384,19 +384,7 @@ export default function Publish() {
                                         }
                                     />
                                 </div>
-                                <div className="form-group">
-                                    <label className="labelForm" htmlFor="type">
-                                        Type:
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="type"
-                                        value={type}
-                                        onChange={(event) =>
-                                            setCountry(event.target.value)
-                                        }
-                                    />
-                                </div>
+
                                 <div className="form-group">
                                     <label
                                         className="labelForm"

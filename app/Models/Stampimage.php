@@ -10,7 +10,7 @@ class Stampimage extends Model
     use HasFactory;
 
     protected $fillable = [
-        'stampId  ',
+        'stampid  ',
         'imageurl '
     ];
 }
