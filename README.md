@@ -16,7 +16,7 @@ Frontend : react + Back-end : Laravel + base de données : MYSQL
 - un serveur de base de données
 
 ### Exécution du projet
-https://github.com/herissonfei/timbres.git
+git clone https://github.com/herissonfei/timbres.git
 
 cd .\timbres\
 
