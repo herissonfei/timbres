@@ -13,7 +13,7 @@ export default function Home() {
                         Une plateforme d'enchère d'exception
                     </h2>
                     <p className="hero__text hero__text--text-courant">
-                        Participer à une enchère n’aura jamais été aussi simple
+                        Participer à une enchère n'aura jamais été aussi simple
                         et rapide ! <br /> Découvrez dès maintenant notre
                         sélection.
                     </p>

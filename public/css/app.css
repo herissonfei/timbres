@@ -2020,6 +2020,7 @@ nav li:hover .menu__dropdown {
 
 .wrapper {
     margin: 0 8vw;
+    /* margin: 0 4vw; */
 }
 
 .wrapper--header {
